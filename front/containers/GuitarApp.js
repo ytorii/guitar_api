@@ -16,7 +16,6 @@ class GuitarApp extends Component {
         }
         { this.props.isSignedIn &&
           <div>
-            <h2> The guitars list </h2>
             <GuitarForm />
             <br />
             <MakerSelect />

@@ -2,7 +2,7 @@ import React , { Component } from 'react'
 import { connect }           from 'react-redux'
 import * as Actions          from '../actions/Guitar'
 import Guitar                from '../components/Guitar'
-import GuitarEditForm        from '../containers/GuitarEditForm'
+import GuitarEditForm        from '../components/GuitarEditForm'
 
 class GuitarsList extends Component {
   componentDidMount(){
@@ -15,6 +15,8 @@ class GuitarsList extends Component {
         <GuitarEditForm
           params={ guitar }
           key={ guitar.id }
+          onEdit={ this.props.editGuitar }
+          onCancel={ this.props.toggleEdit }
         />
         :
         <Guitar

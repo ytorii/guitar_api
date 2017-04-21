@@ -1,8 +1,6 @@
-import React, { Component }       from 'react'
-import { connect }                from 'react-redux'
-import { editGuitar, toggleEdit } from '../actions/Guitar'
+import React, { Component } from 'react'
 
-export class GuitarEditForm extends Component {
+class GuitarEditForm extends Component {
   onSubmitHandler(e) {
     e.preventDefault()
     const params = {
@@ -10,7 +8,7 @@ export class GuitarEditForm extends Component {
       name: this.refs.inputName.value.trim(),
       maker: this.refs.inputMaker.value.trim()
     }
-    this.props.editGuitar(params)
+    this.props.onEdit(params)
   }
 
   render() {
@@ -30,7 +28,7 @@ export class GuitarEditForm extends Component {
           <td>
             <input type="button" value="cancel" onClick={ e => { 
               e.preventDefault()
-              toggleEdit(id)
+              this.props.onCancel(id)
             }} /> 
           </td>
         </tr>
@@ -39,8 +37,4 @@ export class GuitarEditForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { isSending: state.Guitar.isFetching }
-}
-
-export default connect(mapStateToProps, { editGuitar, toggleEdit } )(GuitarEditForm)
+export default GuitarEditForm
