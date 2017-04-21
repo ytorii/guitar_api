@@ -1,0 +1,36 @@
+import React , { Component } from 'react'
+import { connect }           from 'react-redux'
+import UserForms             from './UserForms'
+import GuitarForm            from './GuitarForm'
+import GuitarsList           from './GuitarsList'
+import MakerSelect           from './MakerSelect'
+
+class GuitarApp extends Component {
+  render(){
+    return (
+      <div>
+        { !this.props.isSignedIn &&
+          <div>
+            <UserForms />
+          </div>
+        }
+        { this.props.isSignedIn &&
+          <div>
+            <h2> The guitars list </h2>
+            <GuitarForm />
+            <br />
+            <MakerSelect />
+            <GuitarsList />
+          </div>
+        }
+      </div>
+    )
+  }
+}
+
+const  mapStateToProps = (state) => {
+    return {
+      isSignedIn: state.User.isSignedIn
+    }
+  }
+export default connect(mapStateToProps)(GuitarApp)
