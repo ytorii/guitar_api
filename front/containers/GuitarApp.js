@@ -4,6 +4,7 @@ import UserForms             from './UserForms'
 import GuitarForm            from './GuitarForm'
 import GuitarsList           from './GuitarsList'
 import MakerSelect           from './MakerSelect'
+import * as Actions          from '../actions/User'
 
 class GuitarApp extends Component {
   render(){
@@ -20,6 +21,12 @@ class GuitarApp extends Component {
             <br />
             <MakerSelect />
             <GuitarsList />
+            <button onClick={ e => {
+              e.preventDefault()
+              this.props.signOutUser()
+            }} >
+              Sign Out
+            </button>
           </div>
         }
       </div>
@@ -32,4 +39,4 @@ const  mapStateToProps = (state) => {
       isSignedIn: state.User.isSignedIn
     }
   }
-export default connect(mapStateToProps)(GuitarApp)
+export default connect(mapStateToProps, Actions)(GuitarApp)

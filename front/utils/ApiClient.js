@@ -5,20 +5,25 @@ const authKeys = [ 'access-token', 'client', 'expiry', 'token-type', 'uid' ]
 const saveAuthHeaders = (headers) => {
   authKeys.map( (key) => {
     if(headers[key]){
-      sessionStorage.removeItem(key)
       sessionStorage.setItem(key, headers[key])
     }
   })
 }
 
+const clearAuthHeaders = () => {
+  authKeys.map( (key) => {
+    sessionStorage.removeItem(key)
+  })
+}
+
 const fetchAuthHeaders = () => {
-  let authHeaders = {}
+  let temp = {}
 
   authKeys.map( (key) => {
-    authHeaders[key] = sessionStorage.getItem(key)
+    temp[key] = sessionStorage.getItem(key)
   })
 
-  return authHeaders
+  return temp
 }
 
 const onSuccess = (response) => {
