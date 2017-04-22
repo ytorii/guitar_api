@@ -1,18 +1,15 @@
 import { createAction } from 'redux-actions'
 import Actions          from '../constants/Actions'
+import BackendURLs      from '../constants/BackendURLs.js'
 import ApiClient        from '../utils/ApiClient'
-
-const APIPath = 'http://192.168.0.8:3000'
-const authAPIPath = `${APIPath}/auth`
 
 const userRequest = createAction(Actions.user.sendCredentials)
 const userSignIn = createAction(Actions.user.signIn)
 const userSignOut = createAction(Actions.user.signOut)
 
-const signUpAPI = (params) => ApiClient.post(authAPIPath, params)
-const signInAPI = (params) => ApiClient.post(`${authAPIPath}/sign_in`, params)
-//const signOutAPI = () => ApiClient.delete(`${authAPIPath}/sign_out`)
-const signOutAPI = () => ApiClient.delete('http://192.168.0.8:3000/auth/sign_out')
+const signUpAPI = (params) => ApiClient.post(BackendURLs.user.signUp, params)
+const signInAPI = (params) => ApiClient.post(BackendURLs.user.signIn, params)
+const signOutAPI = (params) => ApiClient.delete(BackendURLs.user.signOut, params)
 
 export const signUpUser = (params) => {
   return dispatch => {

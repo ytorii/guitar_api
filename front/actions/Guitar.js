@@ -1,8 +1,7 @@
 import { createAction } from 'redux-actions'
-import Actions from '../constants/Actions'
-import ApiClient from '../utils/ApiClient'
-
-const guitarsAPIPath = 'http://192.168.0.8:3000/guitars'
+import Actions          from '../constants/Actions'
+import BackendURLs      from '../constants/BackendURLs'
+import ApiClient        from '../utils/ApiClient'
 
 const requestGuitarsList = createAction(Actions.guitar.requestList)
 const createGuitarsList = createAction(Actions.guitar.createList)
@@ -16,10 +15,10 @@ export const selectMaker = createAction(Actions.guitar.selectMaker,
 export const toggleEdit = createAction(Actions.guitar.toggleEdit,
   (id) => { return { id: id } } )
 
-const fetchAPI = () => ApiClient.get(guitarsAPIPath)
-const createAPI = (params) => ApiClient.post(guitarsAPIPath, params)
-const editAPI = (params) => ApiClient.patch(`${guitarsAPIPath}/${params.id}`, params)
-const deleteAPI = (id) => ApiClient.delete(`${guitarsAPIPath}/${id}`)
+const fetchAPI = () => ApiClient.get(BackendURLs.guitars)
+const createAPI = (params) => ApiClient.post(BackendURLs.guitars, params)
+const editAPI = (params) => ApiClient.patch(BackendURLs.guitar(params.id), params)
+const deleteAPI = (id) => ApiClient.delete(BackendURLs.guitar(id))
 
 const actionDispatch = (api, action, params) => {
   return dispatch => {
