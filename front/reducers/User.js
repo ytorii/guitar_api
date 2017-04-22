@@ -34,7 +34,6 @@ const userReducer = {
   },
 
   [Actions.user.signOut]:
-    //TODO: Delete Guitar's state at the same time!
     (state, action) => {
       return newState(userInitial)
     }
