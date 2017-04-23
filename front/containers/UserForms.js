@@ -8,15 +8,17 @@ import SignOutForm          from '../components/SignOutForm'
 export class UserForms extends Component {
   render() {
     return (
-      { !this.props.isSignedIn &&
-        <div>
-          <SignUpForm isSending={ this.props.isSending } onSubmit={ this.props.signUpUser }/>
-          <SignInForm isSending={ this.props.isSending } onSubmit={ this.props.signInUser }/>
-        </div>
-      }
-      { !this.props.isSignedIn &&
-        <SignOutForm onClick={ this.props.signUpUser }/>
-      }
+      <div>
+        { !this.props.isSignedIn &&
+          <div>
+            <SignUpForm isSending={ this.props.isSending } onSubmit={ this.props.signUpUser }/>
+            <SignInForm isSending={ this.props.isSending } onSubmit={ this.props.signInUser }/>
+          </div>
+        }
+        { this.props.isSignedIn &&
+          <SignOutForm onClick={ this.props.signUpUser }/>
+        }
+      </div>
     )
   }
 }
