@@ -5,7 +5,8 @@ export default {
   user: {
     signUp: `${BackendURL}/auth`,
     signIn: `${BackendURL}/auth/sign_in`,
-    signOut: `${BackendURL}/auth/sign_out`
+    signOut: `${BackendURL}/auth/sign_out`,
+    checkSignin: `${BackendURL}/auth/validate_token`
   },
   guitars: `${BackendURL}/guitars`,
   guitar: (id) => `${BackendURL}/guitars/${id}`

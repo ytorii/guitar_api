@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import * as ACtions         from '../actions/User'
+import * as Actions         from '../actions/User'
 import SignUpForm           from '../components/SignUpForm'
 import SignInForm           from '../components/SignInForm'
 import SignOutForm          from '../components/SignOutForm'
@@ -16,7 +16,12 @@ export class UserForms extends Component {
           </div>
         }
         { this.props.isSignedIn &&
-          <SignOutForm onClick={ this.props.signUpUser }/>
+          <div>
+            <SignOutForm onClick={ this.props.signUpUser }/>
+            <button onClick={ Actions.checkSigninUser } >
+              validate token
+            </button>
+          </div>
         }
       </div>
     )
