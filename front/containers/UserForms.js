@@ -6,8 +6,7 @@ import SignInForm           from '../components/SignInForm'
 import SignOutForm          from '../components/SignOutForm'
 
 export class UserForms extends Component {
-  onClickHandler(e) {
-    e.preventDefault()
+  componentDidMount(){
     this.props.checkSigninUser()
   }
 
@@ -23,9 +22,6 @@ export class UserForms extends Component {
         { this.props.isSignedIn &&
           <div>
             <SignOutForm onClick={ this.props.signOutUser }/>
-            <button onClick={ this.onClickHandler.bind(this) } >
-              validate token
-            </button>
           </div>
         }
       </div>
