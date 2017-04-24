@@ -6,6 +6,11 @@ import SignInForm           from '../components/SignInForm'
 import SignOutForm          from '../components/SignOutForm'
 
 export class UserForms extends Component {
+  onClickHandler(e) {
+    e.preventDefault()
+    this.props.checkSigninUser()
+  }
+
   render() {
     return (
       <div>
@@ -18,7 +23,7 @@ export class UserForms extends Component {
         { this.props.isSignedIn &&
           <div>
             <SignOutForm onClick={ this.props.signOutUser }/>
-            <button onClick={ Actions.checkSigninUser } >
+            <button onClick={ this.onClickHandler.bind(this) } >
               validate token
             </button>
           </div>

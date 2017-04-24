@@ -10,7 +10,7 @@ const userCheckSignin = createAction(Actions.user.checkSignin)
 
 const signUpAPI = (params) => ApiClient.post(BackendURLs.user.signUp, params)
 const signInAPI = (params) => ApiClient.post(BackendURLs.user.signIn, params)
-const signOutAPI = (params) => ApiClient.delete(BackendURLs.user.signOut)
+const signOutAPI = () => ApiClient.delete(BackendURLs.user.signOut)
 const checkSigninAPI = () => ApiClient.get(BackendURLs.user.checkSignin)
 
 export const signUpUser = (params) => {
