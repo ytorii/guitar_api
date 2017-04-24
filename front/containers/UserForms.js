@@ -17,7 +17,7 @@ export class UserForms extends Component {
         }
         { this.props.isSignedIn &&
           <div>
-            <SignOutForm onClick={ this.props.signUpUser }/>
+            <SignOutForm onClick={ this.props.signOutUser }/>
             <button onClick={ Actions.checkSigninUser } >
               validate token
             </button>
