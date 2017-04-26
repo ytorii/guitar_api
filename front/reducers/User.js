@@ -5,7 +5,7 @@ const newState = (state, data) => Object.assign({}, state, data)
 
 const userInitial = {
   isSignedIn: false,
-  isSending: false,
+  isSending: true,
 }
 
 const userReducer = {
@@ -41,7 +41,7 @@ const userReducer = {
   [Actions.user.checkSignin]:{
     next: (state, action) => {
       return newState(state, {
-        isSignedIn: true,
+        isSignedIn: action.payload.success,
         isSending: false
       })
     },

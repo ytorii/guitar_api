@@ -13,13 +13,13 @@ export class UserForms extends Component {
   render() {
     return (
       <div>
-        { !this.props.isSignedIn &&
+        { !this.props.isSignedIn && !this.props.isSending &&
           <div>
             <SignUpForm isSending={ this.props.isSending } onSubmit={ this.props.signUpUser }/>
             <SignInForm isSending={ this.props.isSending } onSubmit={ this.props.signInUser }/>
           </div>
         }
-        { this.props.isSignedIn &&
+        { this.props.isSignedIn && !this.props.isSending &&
           <div>
             <SignOutForm onClick={ this.props.signOutUser }/>
           </div>
