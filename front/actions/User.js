@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions'
 import Actions          from '../constants/Actions'
 import BackendURLs      from '../constants/BackendURLs.js'
 import ApiClient        from '../utils/ApiClient'
+import TokenStorage     from '../utils/TokenStorage'
 
 const userRequest = createAction(Actions.user.sendCredentials)
 const userSignIn = createAction(Actions.user.signIn)
@@ -30,6 +31,10 @@ export const signInUser = (params) => {
 export const signOutUser = () => {
   return dispatch => {
     return signOutAPI()
-      .then( json => dispatch(userSignOut(json)))
+      .then( json => {
+        TokenStorage.delete()
+        return dispatch(userSignOut(json))
+      })
+
   }
 }

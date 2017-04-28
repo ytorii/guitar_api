@@ -1,11 +1,5 @@
 const authKeys =  [ 'access-token', 'client', 'expiry', 'token-type', 'uid' ]
 
-const clear = () => {
-  authKeys.map( (key) => {
-    window.sessionStorage.removeItem(key)
-  })
-}
-
 const TokenStorage = {
   save(headers) {
     authKeys.map( (key) => {
@@ -29,6 +23,12 @@ const TokenStorage = {
       })
     }
     return temp
+  },
+
+  delete() {
+    authKeys.map( (key) => {
+      window.sessionStorage.removeItem(key)
+    })
   }
 }
 
