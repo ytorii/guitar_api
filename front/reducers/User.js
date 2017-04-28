@@ -1,11 +1,12 @@
-import { handleActions }   from 'redux-actions'
-import Actions             from '../constants/Actions'
+import { handleActions } from 'redux-actions'
+import Actions           from '../constants/Actions'
+import TokenStorage      from '../utils/TokenStorage'
 
 const newState = (state, data) => Object.assign({}, state, data)
 
 const userInitial = {
-  isSignedIn: false,
-  isSending: true,
+  isSignedIn: TokenStorage.exists(),
+  isSending: false
 }
 
 const userReducer = {

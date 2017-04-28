@@ -3,7 +3,6 @@ export default {
     signUp: 'SIGN_UP',
     signIn: 'SIGN_IN',
     signOut: 'SIGN_OUT',
-    checkSignin: 'CHECK_SIGNIN',
     sendCredentials: 'SEND_CREDENTIALS'
   },
 

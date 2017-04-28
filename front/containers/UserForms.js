@@ -6,10 +6,6 @@ import SignInForm           from '../components/SignInForm'
 import SignOutForm          from '../components/SignOutForm'
 
 export class UserForms extends Component {
-  componentDidMount(){
-    this.props.checkSigninUser()
-  }
-
   render() {
     return (
       <div>
