@@ -13,3 +13,12 @@ guitars = Guitar.create([
   { name: 'Telecaster', maker: 'Fender', amount: 80 },
   { name: 'MUSIC MAN JP', maker: 'Music Man', amount: 5 }
 ])
+
+players = Player.create([
+  { name: 'Tak Matsumoto', email: 'tk@example.com', guitar_id: 1 },
+  { name: 'Zakk Wylde', email: 'zw@example.com', guitar_id: 1 },
+  { name: 'Tonny Iomi', email: 'ti@example.com', guitar_id: 2 },
+  { name: 'Richie Blackmore', email: 'rb@example.com', guitar_id: 3 },
+  { name: 'Yngwie Malmsteen', email: 'ym@example.com', guitar_id: 3 },
+  { name: 'John Petrucci', email: 'jp@example.com', guitar_id: 5 }
+])
