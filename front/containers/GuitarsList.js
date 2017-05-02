@@ -15,14 +15,14 @@ class GuitarsList extends Component {
         <GuitarEditForm
           params={ guitar }
           key={ guitar.id }
-          onEdit={ this.props.editGuitar }
+          onClick={ this.props.editGuitar }
           onCancel={ this.props.toggleEdit }
         />
         :
         <Guitar
           params={ guitar }
           key={ guitar.id }
-          onClick={ this.props.toggleEdit }
+          onEdit={ this.props.toggleEdit }
           onDelete={ this.props.deleteGuitar }
         /> 
     )

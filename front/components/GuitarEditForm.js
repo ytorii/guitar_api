@@ -8,7 +8,7 @@ class GuitarEditForm extends Component {
       name: this.refs.inputName.value.trim(),
       maker: this.refs.inputMaker.value.trim()
     }
-    this.props.onEdit(params)
+    this.props.onClick(params)
   }
 
   render() {
