@@ -13,7 +13,7 @@ export default class SignInForm extends Component {
   render() {
     return (
       <div>
-        <p>Sign in here!</p>
+        <p>Please sign in!</p>
         <form onSubmit={ this.onSubmitHandler.bind(this) }>
           <div>
             <label>

@@ -7,6 +7,7 @@ import TokenStorage     from '../utils/TokenStorage'
 const userRequest = createAction(Actions.user.sendCredentials)
 const userSignIn = createAction(Actions.user.signIn)
 const userSignOut = createAction(Actions.user.signOut)
+export const toggleUserModal = createAction(Actions.user.toggleModal)
 
 const signUpAPI = (params) => ApiClient.post(BackendURLs.user.signUp, params)
 const signInAPI = (params) => ApiClient.post(BackendURLs.user.signIn, params)

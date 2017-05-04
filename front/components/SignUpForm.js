@@ -27,6 +27,7 @@ export default class SignUpForm extends Component {
               Password:
               <input type="password" ref="inputPassword" />
             </label>
+            <br />
             <label>
               Retype password:
               <input type="password" ref="inputPasswordConfirmation" />

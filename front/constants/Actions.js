@@ -3,7 +3,8 @@ export default {
     signUp: 'SIGN_UP',
     signIn: 'SIGN_IN',
     signOut: 'SIGN_OUT',
-    sendCredentials: 'SEND_CREDENTIALS'
+    sendCredentials: 'SEND_CREDENTIALS',
+    toggleModal: 'TOGGLE_USER_MODAL'
   },
 
   guitar: {
@@ -13,6 +14,7 @@ export default {
     editGuitar: 'EDIT_GUITAR',
     deleteGuitar: 'DELETE_GUITAR',
     selectMaker: 'SELECT_MAKER',
-    toggleEdit: 'TOGGLE_EDIT'
+    toggleEdit: 'TOGGLE_EDIT',
+    toggleModal: 'TOGGLE_GUITAR_MODAL'
   }
 }

@@ -6,7 +6,8 @@ const newState = (state, data) => Object.assign({}, state, data)
 
 const userInitial = {
   isSignedIn: TokenStorage.exists(),
-  isSending: false
+  isSending: false,
+  isModalOpen: false
 }
 
 const userReducer = {
@@ -21,7 +22,8 @@ const userReducer = {
     next: (state, action) => {
       return newState(state, {
         isSignedIn: true,
-        isSending: false
+        isSending: false,
+        isModalOpen: false
       })
     },
 
@@ -54,7 +56,14 @@ const userReducer = {
         errors: action.payload.messages
       })
     }
-  }
+  },
+
+  [Actions.user.toggleModal]: 
+    (state, action) => {
+      return newState(state, {
+        isModalOpen: !state.isModalOpen
+      })
+    }
 }
 
 export default handleActions(userReducer, userInitial)
