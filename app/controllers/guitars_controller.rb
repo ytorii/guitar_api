@@ -50,6 +50,6 @@ class GuitarsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def guitar_params
-      params.require(:guitar).permit(:name, :maker, :amount)
+      params.require(:guitar).permit(:id, :name, :maker, :amount)
     end
 end
