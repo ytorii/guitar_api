@@ -7,7 +7,7 @@ export default class SignInForm extends Component {
       email: this.refs.inputEmail.value.trim(),
       password: this.refs.inputPassword.value.trim()
     }
-    this.props.onSubmit(params)
+    this.props.signInUser(params)
   }
 
   render() {

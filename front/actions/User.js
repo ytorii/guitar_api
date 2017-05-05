@@ -36,6 +36,5 @@ export const signOutUser = () => {
         TokenStorage.delete()
         return dispatch(userSignOut(json))
       })
-
   }
 }

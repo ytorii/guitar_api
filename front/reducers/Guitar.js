@@ -5,6 +5,7 @@ const newState = (state, data) => Object.assign({}, state, data)
 
 const guitarInitial = {
   isFetching: false,
+  isModalOpen: false,
   selectedMaker: '',
   guitars: []
 }
@@ -100,6 +101,13 @@ const guitarReducer = {
           }
           return g
         })
+      })
+    },
+
+  [Actions.guitar.toggleModal]: 
+    (state, action) => {
+      return newState(state, {
+        isModalOpen: !state.isModalOpen
       })
     }
 }

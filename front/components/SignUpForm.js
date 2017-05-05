@@ -8,7 +8,7 @@ export default class SignUpForm extends Component {
       password: this.refs.inputPassword.value.trim(),
       password_confirmation: this.refs.inputPasswordConfirmation.value.trim()
     }
-    this.props.onSubmit(params)
+    this.props.signUpUser(params)
   }
 
   render() {

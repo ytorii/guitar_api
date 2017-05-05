@@ -4,32 +4,34 @@ import * as Actions         from '../actions/User'
 import SignUpForm           from '../components/SignUpForm'
 import SignInForm           from '../components/SignInForm'
 import SignOutForm          from '../components/SignOutForm'
-import Modal                from './Modal'
+import Modal                from '../components/Modal'
 
 export class UserForms extends Component {
+  onToggleHandler(e){
+    e.preventDefault()
+    this.props.toggleUserModal()
+  }
+
   render() {
     return (
       <div>
-        { !this.props.isSignedIn && !this.props.isSending &&
+        { !this.props.isSignedIn &&
           <div>
             <div>
-              <SignInForm isSending={ this.props.isSending } onSubmit={ this.props.signInUser }/>
+              <SignInForm {...this.props} />
             </div>
             <br />
             <div>
-              <button onClick={ e => {
-                e.preventDefault()
-                this.props.toggleUserModal()
-              }}>
-                Sign Up Now!
+              <button onClick= {this.onToggleHandler.bind(this)} >
+                Create New Account
               </button>
               <Modal isOpen={this.props.isModalOpen} onClose={this.props.toggleUserModal}>
-                <SignUpForm isSending={ this.props.isSending } onSubmit={ this.props.signUpUser }/>
+                <SignUpForm {...this.props} />
               </Modal>
             </div>
           </div>
         }
-        { this.props.isSignedIn && !this.props.isSending &&
+        { this.props.isSignedIn &&
           <div>
             <SignOutForm onClick={ this.props.signOutUser }/>
           </div>
@@ -42,7 +44,6 @@ export class UserForms extends Component {
 const mapStateToProps = (state) => {
   return { 
     isSending: state.User.isSending, 
-    isSignedIn: state.User.isSignedIn, 
     isModalOpen: state.User.isModalOpen 
   }
 }

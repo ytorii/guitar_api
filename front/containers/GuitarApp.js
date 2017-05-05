@@ -1,27 +1,14 @@
 import React , { Component } from 'react'
 import { connect }           from 'react-redux'
 import UserForms             from './UserForms'
-import GuitarForm            from './GuitarForm'
-import GuitarsList           from './GuitarsList'
-import MakerSelect           from './MakerSelect'
-import Modal           from './Modal'
+import GuitarContainers      from './GuitarContainers'
 
 class GuitarApp extends Component {
   render(){
     return (
       <div>
-        <UserForms />
-        { this.props.isSignedIn &&
-          <div>
-            <GuitarForm />
-            <br />
-            <MakerSelect />
-            <GuitarsList />
-            <Modal isOpen={this.props.isModalOpen}>
-              Hello!
-            </Modal>
-          </div>
-        }
+        <UserForms isSignedIn={this.props.isSignedIn}/>
+        <GuitarContainers isSignedIn={this.props.isSignedIn}/>
       </div>
     )
   }
@@ -30,7 +17,6 @@ class GuitarApp extends Component {
 const  mapStateToProps = (state) => {
   return {
     isSignedIn: state.User.isSignedIn,
-    isModalOpen: state.User.isModalOpen
   }
 }
 
