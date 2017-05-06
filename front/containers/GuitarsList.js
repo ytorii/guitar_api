@@ -13,21 +13,11 @@ class GuitarsList extends Component {
 
   renderGuitar(guitar){
     return (
-      guitar.isEdit ? 
-        <GuitarEditForm
-          params={ guitar }
-          key={ guitar.id }
-          onClick={ this.props.editGuitar }
-          onCancel={ this.props.toggleEdit }
-        />
-        :
-        <GuitarElememt
-          params={ guitar }
-          key={ guitar.id }
-          onShow={ this.props.showGuitar }
-          onEdit={ this.props.toggleEdit }
-          onDelete={ this.props.deleteGuitar }
-        /> 
+      <GuitarElememt
+        params={ guitar }
+        key={ guitar.id }
+        onShow={ this.props.showGuitar }
+      /> 
     )
   }
 
@@ -50,7 +40,12 @@ class GuitarsList extends Component {
               </tbody>
             </table>
             <Modal isOpen={this.props.isModalOpen} onClose={this.props.toggleGuitarModal}>
-              <Guitar params={this.props.guitar} />
+              <Guitar
+                params={ this.props.guitar }
+                onEdit={ this.props.editGuitar }
+                toggleEdit={ this.props.toggleEdit }
+                onDelete={ this.props.deleteGuitar }
+              />
             </Modal>
           </div>
         }

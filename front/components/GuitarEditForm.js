@@ -8,30 +8,26 @@ class GuitarEditForm extends Component {
       name: this.refs.inputName.value.trim(),
       maker: this.refs.inputMaker.value.trim()
     }
-    this.props.onClick(params)
+    this.props.onEdit(params)
   }
 
   render() {
     const { id, name, maker } = this.props.params
     return (
       <form onSubmit={ this.onSubmitHandler.bind(this) }>
-        <tr>
-          <td>
+        <ul>
+          <li>
             <input type="text" ref="inputName" defaultValue={ name } />
-          </td>
-          <td>
+          </li>
+          <li>
             <input type="text" ref="inputMaker" defaultValue={ maker } />
-          </td>
-          <td>
-            <input type="submit" value="edit" />
-          </td>
-          <td>
-            <input type="button" value="cancel" onClick={ e => { 
-              e.preventDefault()
-              this.props.onCancel(id)
-            }} /> 
-          </td>
-        </tr>
+          </li>
+        </ul>
+        <input type="submit" value="edit" />
+        <input type="button" value="cancel" onClick={ e => { 
+          e.preventDefault()
+          this.props.onCancel(id)
+        }} /> 
       </form>
     )
   }

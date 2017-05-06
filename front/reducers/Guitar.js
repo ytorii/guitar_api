@@ -33,7 +33,7 @@ const guitarReducer = {
     next: (state, action) => {
       return newState(state, {
         isFetching: false,
-        guitar: action.payload
+        guitar: newState(action.payload, {isEdit: false})
       })
     },
 
@@ -49,6 +49,7 @@ const guitarReducer = {
     next: (state, action) => {
       return newState(state, {
         isFetching: false,
+        guitar: newState(action.payload, {isEdit: false}),
         guitars: state.guitars.map( g => {
           return g.id == action.payload.id ? action.payload : g
         })
@@ -112,12 +113,7 @@ const guitarReducer = {
   [Actions.guitar.toggleEdit]:
     (state, action) => {
       return newState(state, {
-        guitars: state.guitars.map( g => {
-          if(g.id == action.payload.id){
-            g.isEdit = !g.isEdit
-          }
-          return g
-        })
+        guitar: newState(state.guitar, {isEdit: !state.guitar.isEdit})
       })
     },
 
