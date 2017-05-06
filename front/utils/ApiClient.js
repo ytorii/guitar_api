@@ -1,33 +1,8 @@
 import request from 'superagent'
-
-const authKeys = [ 'access-token', 'client', 'expiry', 'token-type', 'uid' ]
-
-const saveAuthHeaders = (headers) => {
-  authKeys.map( (key) => {
-    if(headers[key]){
-      sessionStorage.setItem(key, headers[key])
-    }
-  })
-}
-
-const clearAuthHeaders = () => {
-  authKeys.map( (key) => {
-    sessionStorage.removeItem(key)
-  })
-}
-
-const fetchAuthHeaders = () => {
-  let temp = {}
-
-  authKeys.map( (key) => {
-    temp[key] = sessionStorage.getItem(key)
-  })
-
-  return temp
-}
+import TokenStorage from './TokenStorage'
 
 const onSuccess = (response) => {
-  saveAuthHeaders(response.headers)
+  TokenStorage.save(response.headers)
   return response.body
 }
 
@@ -64,28 +39,28 @@ const ApiClient = {
   get(path, params) {
     return request
       .get(path)
-      .set(fetchAuthHeaders())
+      .set(TokenStorage.fetch())
       .query(params)
       .then(onSuccess, onFailure)
   },
   post(path, params) {
     return request
       .post(path)
-      .set(fetchAuthHeaders())
+      .set(TokenStorage.fetch())
       .send(params)
       .then(onSuccess, onFailure)
   },
   patch(path, params) {
     return request
       .patch(path)
-      .set(fetchAuthHeaders())
+      .set(TokenStorage.fetch())
       .send(params)
       .then(onSuccess, onFailure)
   },
   delete(path) {
     return request
       .del(path)
-      .set(fetchAuthHeaders())
+      .set(TokenStorage.fetch())
       .then(onSuccess, onFailure)
   }
 }

@@ -1,11 +1,13 @@
-import { handleActions }   from 'redux-actions'
-import Actions             from '../constants/Actions'
+import { handleActions } from 'redux-actions'
+import Actions           from '../constants/Actions'
+import TokenStorage      from '../utils/TokenStorage'
 
 const newState = (state, data) => Object.assign({}, state, data)
 
 const userInitial = {
-  isSignedIn: false,
+  isSignedIn: TokenStorage.exists(),
   isSending: false,
+  isModalOpen: false
 }
 
 const userReducer = {
@@ -20,7 +22,8 @@ const userReducer = {
     next: (state, action) => {
       return newState(state, {
         isSignedIn: true,
-        isSending: false
+        isSending: false,
+        isModalOpen: false
       })
     },
 
@@ -41,7 +44,7 @@ const userReducer = {
   [Actions.user.checkSignin]:{
     next: (state, action) => {
       return newState(state, {
-        isSignedIn: true,
+        isSignedIn: action.payload.success,
         isSending: false
       })
     },
@@ -53,7 +56,14 @@ const userReducer = {
         errors: action.payload.messages
       })
     }
-  }
+  },
+
+  [Actions.user.toggleModal]: 
+    (state, action) => {
+      return newState(state, {
+        isModalOpen: !state.isModalOpen
+      })
+    }
 }
 
 export default handleActions(userReducer, userInitial)

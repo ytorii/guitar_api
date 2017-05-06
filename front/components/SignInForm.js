@@ -7,13 +7,13 @@ export default class SignInForm extends Component {
       email: this.refs.inputEmail.value.trim(),
       password: this.refs.inputPassword.value.trim()
     }
-    this.props.onSubmit(params)
+    this.props.signInUser(params)
   }
 
   render() {
     return (
       <div>
-        <p>Sign in here!</p>
+        <p>Please sign in!</p>
         <form onSubmit={ this.onSubmitHandler.bind(this) }>
           <div>
             <label>
