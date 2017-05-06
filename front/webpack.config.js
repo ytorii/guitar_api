@@ -22,8 +22,8 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    host: "192.168.0.8",
-    //host: "0.0.0.0",
+    //host: "192.168.0.8",
+    host: "0.0.0.0",
     port: 4000,
     inline: true,
     historyApiFallback: true,

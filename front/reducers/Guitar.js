@@ -106,6 +106,7 @@ const guitarReducer = {
   [Actions.guitar.selectMaker]:
     (state, action) => {
       return newState(state, {
+        isFetching: false,
         selectedMaker: action.payload.selectedMaker
       })
     },
@@ -113,6 +114,7 @@ const guitarReducer = {
   [Actions.guitar.toggleEdit]:
     (state, action) => {
       return newState(state, {
+        isFetching: false,
         guitar: newState(state.guitar, {isEdit: !state.guitar.isEdit})
       })
     },
@@ -120,6 +122,7 @@ const guitarReducer = {
   [Actions.guitar.toggleModal]: 
     (state, action) => {
       return newState(state, {
+        isFetching: false,
         isModalOpen: !state.isModalOpen
       })
     }

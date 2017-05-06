@@ -9,7 +9,7 @@ export default {
 
   guitar: {
     requestList: 'REQUEST_LIST',
-    createList: 'CREATE_LIST',
+    createList: 'CREATE_GUITAR_LIST',
     addGuitar: 'ADD_GUITAR',
     showGuitar: 'SHOW_GUITAR',
     editGuitar: 'EDIT_GUITAR',
