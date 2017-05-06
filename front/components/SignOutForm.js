@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default class SignOutForm extends Component {
-  onSubmitHandler(e) {
+  onClickHandler(e) {
     e.preventDefault()
     this.props.onClick()
   }
