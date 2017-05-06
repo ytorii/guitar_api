@@ -10,7 +10,7 @@ class GuitarsController < ApplicationController
 
   # GET /guitars/1
   def show
-    render json: @guitar
+    render json: @guitar, include: 'players'
   end
 
   # POST /guitars

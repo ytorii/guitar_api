@@ -18,29 +18,23 @@ class Guitar extends Component {
 
   render(){
     return (
-      <tr>
-        <td>
-          {this.props.params.name}
-        </td>
-        <td style={{textAlign:'center'}}>
-          {this.props.params.maker}
-        </td>
-        <td>
-          <button onClick={this.onShowHandler.bind(this)}>
-            show
-          </button>
-        </td>
-        <td>
-          <button onClick={this.onEditHandler.bind(this)}>
-            edit
-          </button>
-        </td>
-        <td>
-          <button onClick={this.onDeleteHandler.bind(this)}>
-            delete
-          </button>
-        </td>
-      </tr>
+      <div>
+        <h3>Guitar Data</h3>
+        <ul>
+          <li>
+            {this.props.params.name}
+          </li>
+          <li>
+            {this.props.params.maker}
+          </li>
+        </ul>
+        <p>Players of this Guitar</p>
+        <ul>
+          { this.props.params.players.map((player) => 
+            <li key={player.id}>{ player.name }</li>
+          )}
+        </ul>
+      </div>
     )
   }
 }

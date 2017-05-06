@@ -7,6 +7,7 @@ const guitarInitial = {
   isFetching: false,
   isModalOpen: false,
   selectedMaker: '',
+  guitar: {},
   guitars: []
 }
 
@@ -17,6 +18,22 @@ const guitarReducer = {
       return newState(state, {
         isFetching: false,
         guitars: [...state.guitars, action.payload ]
+      })
+    },
+
+    throw: (state, action) => {
+      return newState(state, {
+        isFetching: false,
+        errors: action.payload.messages
+      })
+    }
+  },
+
+  [Actions.guitar.showGuitar]: {
+    next: (state, action) => {
+      return newState(state, {
+        isFetching: false,
+        guitar: action.payload
       })
     },
 

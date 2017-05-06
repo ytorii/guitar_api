@@ -25,8 +25,12 @@ export const addGuitar = (params) => {
 }
 
 export const showGuitar = (id) => {
-  return ActionDispatch.executeApi(createAction(Actions.guitar.showGuitar),
-    GuitarAPIs.showAPI, id)
+  return dispatch => {
+    dispatch(toggleGuitarModal())
+    dispatch(requestGuitarsList())
+    return ActionDispatch.executeApi(createAction(Actions.guitar.showGuitar),
+      GuitarAPIs.showAPI, id)(dispatch)
+  }
 }
 
 export const editGuitar = (params) => {

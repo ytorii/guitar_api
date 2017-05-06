@@ -11,6 +11,7 @@ export default {
     requestList: 'REQUEST_LIST',
     createList: 'CREATE_LIST',
     addGuitar: 'ADD_GUITAR',
+    showGuitar: 'SHOW_GUITAR',
     editGuitar: 'EDIT_GUITAR',
     deleteGuitar: 'DELETE_GUITAR',
     selectMaker: 'SELECT_MAKER',
