@@ -7,8 +7,9 @@ const guitarInitial = {
   isFetching: false,
   isModalOpen: false,
   selectedMaker: '',
+  guitars: [],
   guitar: {},
-  guitars: []
+  players: []
 }
 
 const guitarReducer = {
@@ -16,14 +17,12 @@ const guitarReducer = {
   [Actions.guitar.addGuitar]: {
     next: (state, action) => {
       return newState(state, {
-        isFetching: false,
         guitars: [...state.guitars, action.payload ]
       })
     },
 
     throw: (state, action) => {
       return newState(state, {
-        isFetching: false,
         errors: action.payload.messages
       })
     }
@@ -32,14 +31,13 @@ const guitarReducer = {
   [Actions.guitar.showGuitar]: {
     next: (state, action) => {
       return newState(state, {
-        isFetching: false,
-        guitar: newState(action.payload, {isEdit: false})
+        guitar: newState(action.payload, {isEdit: false}),
+        players: action.payload.players
       })
     },
 
     throw: (state, action) => {
       return newState(state, {
-        isFetching: false,
         errors: action.payload.messages
       })
     }
@@ -48,7 +46,6 @@ const guitarReducer = {
   [Actions.guitar.editGuitar]: {
     next: (state, action) => {
       return newState(state, {
-        isFetching: false,
         guitar: newState(action.payload, {isEdit: false}),
         guitars: state.guitars.map( g => {
           return g.id == action.payload.id ? action.payload : g
@@ -58,7 +55,6 @@ const guitarReducer = {
 
     throw: (state, action) => {
       return newState(state, {
-        isFetching: false,
         errors: action.payload.messages
       })
     }
@@ -67,37 +63,40 @@ const guitarReducer = {
   [Actions.guitar.deleteGuitar]: {
     next: (state, action) => {
       return newState(state, {
-        isFetching: false,
         guitars: state.guitars.filter(g => g.id != action.payload) 
       })
     },
 
     throw: (state, action) => {
       return newState(state, {
-        isFetching: false,
         errors: action.payload.messages
       })
     }
   },
 
-  [Actions.guitar.requestList]:
+  [Actions.guitar.requestGuitar]:
     (state, action) => {
       return newState(state, {
         isFetching: true
       })
     },
 
+  [Actions.guitar.recieveGuitar]:
+    (state, action) => {
+      return newState(state, {
+        isFetching: false
+      })
+    },
+
   [Actions.guitar.createList]: {
     next: (state, action) => {
       return newState(state, {
-        isFetching: false,
         guitars: action.payload
       })
     },
 
     throw: (state, action) => {
       return newState(state, {
-        isFetching: false,
         errors: action.payload.messages
       })
     }
@@ -106,7 +105,6 @@ const guitarReducer = {
   [Actions.guitar.selectMaker]:
     (state, action) => {
       return newState(state, {
-        isFetching: false,
         selectedMaker: action.payload.selectedMaker
       })
     },
@@ -114,7 +112,6 @@ const guitarReducer = {
   [Actions.guitar.toggleEdit]:
     (state, action) => {
       return newState(state, {
-        isFetching: false,
         guitar: newState(state.guitar, {isEdit: !state.guitar.isEdit})
       })
     },
@@ -122,7 +119,8 @@ const guitarReducer = {
   [Actions.guitar.toggleModal]: 
     (state, action) => {
       return newState(state, {
-        isFetching: false,
+        //isFetching: false,
+        //guitar: state.isModalOpen ? {} : state.guitar,
         isModalOpen: !state.isModalOpen
       })
     }

@@ -4,19 +4,19 @@ import GuitarEditForm       from './GuitarEditForm'
 class Guitar extends Component {
   onEditHandler(e){
     e.preventDefault()
-    this.props.onEdit(this.props.params.id)
+    this.props.onEdit(this.props.guitar.id)
   }
 
   onDeleteHandler(e){
     e.preventDefault()
-    this.props.onDelete(this.props.params.id)
+    this.props.onDelete(this.props.guitar.id)
   }
 
   renderGuitar(guitar){
     return (
       guitar.isEdit ? 
         <GuitarEditForm
-          params={ guitar }
+          guitar={ guitar }
           key={ guitar.id }
           onEdit={ this.props.onEdit }
           onCancel={ this.props.toggleEdit }
@@ -25,10 +25,10 @@ class Guitar extends Component {
         <div>
           <ul>
             <li>
-              {this.props.params.name}
+              {this.props.guitar.name}
             </li>
             <li>
-              {this.props.params.maker}
+              {this.props.guitar.maker}
             </li>
           </ul>
           <button onClick={this.props.toggleEdit}>
@@ -45,10 +45,10 @@ class Guitar extends Component {
     return (
       <div>
         <h3>Guitar Data</h3>
-        { this.renderGuitar(this.props.params) }
+        { this.renderGuitar(this.props.guitar) }
         <p>Players of this Guitar</p>
         <ul>
-          { this.props.params.players.map((player) => 
+          { this.props.players.map((player) => 
             <li key={player.id}>{ player.name }</li>
           )}
         </ul>

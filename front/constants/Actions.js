@@ -8,12 +8,13 @@ export default {
   },
 
   guitar: {
-    requestList: 'REQUEST_LIST',
-    createList: 'CREATE_GUITAR_LIST',
-    addGuitar: 'ADD_GUITAR',
-    showGuitar: 'SHOW_GUITAR',
-    editGuitar: 'EDIT_GUITAR',
-    deleteGuitar: 'DELETE_GUITAR',
+    createList: 'LIST_GUITAR_API',
+    addGuitar: 'ADD_GUITAR_API',
+    showGuitar: 'SHOW_GUITAR_API',
+    editGuitar: 'EDIT_GUITAR_API',
+    deleteGuitar: 'DELETE_GUITAR_API',
+    requestGuitar: 'REQUEST_GUITAR',
+    recieveGuitar: 'RECIEVE_GUITAR',
     selectMaker: 'SELECT_MAKER',
     toggleEdit: 'TOGGLE_EDIT',
     toggleModal: 'TOGGLE_GUITAR_MODAL'

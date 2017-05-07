@@ -33,7 +33,7 @@ export class UserForms extends Component {
             </div>
           </div>
         }
-        { this.props.isSignedIn &&
+        { this.props.isSignedIn && this.props.user &&
           <div>
             <div style={{display: 'inline-block', marginRight: 10}} >
               Hello, {this.props.user.email}
