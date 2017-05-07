@@ -25,10 +25,10 @@ class Guitar extends Component {
         <div>
           <ul>
             <li>
-              {this.props.guitar.name}
+              {guitar.name}
             </li>
             <li>
-              {this.props.guitar.maker}
+              {guitar.maker}
             </li>
           </ul>
           <button onClick={this.props.toggleEdit}>

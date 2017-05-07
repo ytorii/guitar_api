@@ -4,7 +4,7 @@ class GuitarEditForm extends Component {
   onSubmitHandler(e) {
     e.preventDefault()
     const params = {
-      id: this.props.params.id,
+      id: this.props.guitar.id,
       name: this.refs.inputName.value.trim(),
       maker: this.refs.inputMaker.value.trim()
     }
@@ -12,7 +12,7 @@ class GuitarEditForm extends Component {
   }
 
   render() {
-    const { id, name, maker } = this.props.params
+    const { id, name, maker } = this.props.guitar
     return (
       <form onSubmit={ this.onSubmitHandler.bind(this) }>
         <ul>
