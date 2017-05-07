@@ -8,13 +8,6 @@ const appReducer = combineReducers({
   Guitar
 })
 
-const rootReducer = (state, action) => {
-  // All state shuold be removed after sign out.
-  if(action.type === Actions.user.signOut) {
-    state = undefined
-  }
-
-  return appReducer(state, action)
-}
+const rootReducer = (state, action) => appReducer(state, action)
 
 export default rootReducer
