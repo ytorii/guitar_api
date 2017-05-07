@@ -8,7 +8,7 @@ class GuitarApp extends Component {
     return (
       <div>
         <UserForms isSignedIn={this.props.isSignedIn}/>
-        <GuitarContainers isSignedIn={this.props.isSignedIn}/>
+        <GuitarContainers />
       </div>
     )
   }

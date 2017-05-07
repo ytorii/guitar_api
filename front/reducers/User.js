@@ -5,6 +5,7 @@ import TokenStorage      from '../utils/TokenStorage'
 const newState = (state, data) => Object.assign({}, state, data)
 
 const userInitial = {
+  user: null,
   isSignedIn: TokenStorage.exists(),
   isSending: false,
   isModalOpen: false
@@ -21,6 +22,7 @@ const userReducer = {
   [Actions.user.signIn]:{
     next: (state, action) => {
       return newState(state, {
+        user: action.payload.data,
         isSignedIn: true,
         isSending: false,
         isModalOpen: false

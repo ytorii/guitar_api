@@ -1,5 +1,5 @@
-import { requestGuitar } from './actions/Guitar'
-import { requestUser } from './actions/User'
+import { requestGuitar } from '../actions/Guitar'
+import { requestUser } from '../actions/User'
 
 const requestMiddleware = store => next => action => {
   //console.log(action)

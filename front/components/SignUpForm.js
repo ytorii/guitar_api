@@ -5,6 +5,8 @@ export default class SignUpForm extends Component {
     e.preventDefault()
     const params = {
       email: this.refs.inputEmail.value.trim(),
+      name: this.refs.inputName.value.trim(),
+      nickname: this.refs.inputNickname.value.trim(),
       password: this.refs.inputPassword.value.trim(),
       password_confirmation: this.refs.inputPasswordConfirmation.value.trim()
     }
@@ -13,13 +15,25 @@ export default class SignUpForm extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{marginBottom:  10}}>
         <p>Please join us!</p>
         <form onSubmit={ this.onSubmitHandler.bind(this) }>
           <div>
             <label>
               Email:
               <input type="text" ref="inputEmail" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Name:
+              <input type="text" ref="inputName" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Nickname:
+              <input type="text" ref="inputNickname" />
             </label>
           </div>
           <div>

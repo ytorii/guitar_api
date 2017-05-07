@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/index'
-import requestMiddleware from './middlwares/requestMiddleware'
+import requestMiddleware from './middlewares/requestMiddleware'
 
 const middlwares = [ thunk, requestMiddleware ]
 

@@ -8,14 +8,11 @@ class GuitarContainers extends Component {
   render(){
     return (
       <div>
-        { this.props.isSignedIn &&
-          <div>
-            <GuitarForm />
-            <br />
-            <MakerSelect />
-            <GuitarsList />
-          </div>
-        }
+        <h1> The guitars list </h1>
+        <GuitarForm />
+        <br />
+        <MakerSelect />
+        <GuitarsList />
       </div>
     )
   }

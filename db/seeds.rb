@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+users = User.create([
+  { email:'test@example.com', name: 'test1', nickname: '1stUser', password: '12345678', password_confirmation: '12345678' }
+])
+
 guitars = Guitar.create([
   { name: 'Les Paul', maker: 'Gibson', amount: 100 },
   { name: 'SG', maker: 'Gibson', amount: 50 },

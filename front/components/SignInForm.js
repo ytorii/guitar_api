@@ -13,21 +13,16 @@ export default class SignInForm extends Component {
   render() {
     return (
       <div>
-        <p>Please sign in!</p>
         <form onSubmit={ this.onSubmitHandler.bind(this) }>
-          <div>
-            <label>
-              Email:
-              <input type="text" ref="inputEmail" />
-            </label>
-            <label>
-              Password:
-              <input type="password" ref="inputPassword" />
-            </label>
-          </div>
-          <div>
-            <input type="submit" value="Sign In" disabled={this.props.isSending} />
-          </div>
+          <label style={{marginRight: 10 }}>
+            Email:
+            <input type="text" ref="inputEmail" />
+          </label>
+          <label style={{marginRight: 10 }}>
+            Password:
+            <input type="password" ref="inputPassword" />
+          </label>
+          <input type="submit" value="Sign In" disabled={this.props.isSending} />
         </form>
       </div>
     )

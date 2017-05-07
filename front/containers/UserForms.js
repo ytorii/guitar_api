@@ -14,14 +14,16 @@ export class UserForms extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{background: '#a0d8ef', height: 20, padding: 5 }} >
         { !this.props.isSignedIn &&
           <div>
-            <div>
+            <div style={{display: 'inline-block', marginRight: 10}} >
+              Hello, Guest!
+            </div>
+            <div style={{display: 'inline-block', marginRight: 10}} >
               <SignInForm {...this.props} />
             </div>
-            <br />
-            <div>
+            <div style={{display: 'inline-block', marginRight: 10}} >
               <button onClick= {this.onToggleHandler.bind(this)} >
                 Create New Account
               </button>
@@ -33,7 +35,12 @@ export class UserForms extends Component {
         }
         { this.props.isSignedIn &&
           <div>
-            <SignOutForm onClick={ this.props.signOutUser }/>
+            <div style={{display: 'inline-block', marginRight: 10}} >
+              Hello, {this.props.user.email}
+            </div>
+            <div style={{display: 'inline-block', marginRight: 10}} >
+              <SignOutForm onClick={ this.props.signOutUser }/>
+            </div>
           </div>
         }
       </div>
@@ -44,7 +51,8 @@ export class UserForms extends Component {
 const mapStateToProps = (state) => {
   return { 
     isSending: state.User.isSending, 
-    isModalOpen: state.User.isModalOpen 
+    isModalOpen: state.User.isModalOpen, 
+    user: state.User.user
   }
 }
 
