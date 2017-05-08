@@ -61,8 +61,7 @@ const filterMaker = (guitars, selectedMaker) => {
 
 const mapStateToProps = (state) => {
   const { guitar, guitars, players, isFetching, selectedMaker, isModalOpen } = state.Guitar
-  const guitarsList = selectedMaker ?
-    filterMaker(guitars, selectedMaker) : guitars
+  const guitarsList = selectedMaker ?  filterMaker(guitars, selectedMaker) : guitars
 
   return { guitar, guitarsList, players, isFetching, isModalOpen }
 }

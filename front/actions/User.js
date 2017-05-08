@@ -10,6 +10,7 @@ export const toggleUserModal = createAction(Actions.user.toggleModal)
 
 export const signUpUser = (params) => {
   return dispatch => {
+    dispatch(requestUser())
     return UserAPIs.signUpAPI(params)
       .then(json => dispatch(userSignIn(json)))
   }
@@ -17,6 +18,7 @@ export const signUpUser = (params) => {
 
 export const signInUser = (params) => {
   return dispatch => {
+    dispatch(requestUser())
     return UserAPIs.signInAPI(params)
       .then(json => dispatch(userSignIn(json)))
   }
@@ -24,6 +26,7 @@ export const signInUser = (params) => {
 
 export const signOutUser = () => {
   return dispatch => {
+    dispatch(requestUser())
     return UserAPIs.signOutAPI()
       .then( json => {
         TokenStorage.delete()

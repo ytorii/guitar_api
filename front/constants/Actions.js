@@ -9,14 +9,23 @@ export default {
 
   guitar: {
     createList: 'LIST_GUITAR_API',
-    addGuitar: 'ADD_GUITAR_API',
-    showGuitar: 'SHOW_GUITAR_API',
-    editGuitar: 'EDIT_GUITAR_API',
-    deleteGuitar: 'DELETE_GUITAR_API',
+    add: 'ADD_GUITAR_API',
+    show: 'SHOW_GUITAR_API',
+    edit: 'EDIT_GUITAR_API',
+    delete: 'DELETE_GUITAR_API',
     requestGuitar: 'REQUEST_GUITAR',
     recieveGuitar: 'RECIEVE_GUITAR',
-    selectMaker: 'SELECT_MAKER',
-    toggleEdit: 'TOGGLE_EDIT',
+    selectMaker: 'SELECT_GUITAR_MAKER',
+    toggleEdit: 'TOGGLE_GUITAR_EDIT',
     toggleModal: 'TOGGLE_GUITAR_MODAL'
+  },
+
+  player: {
+    createList: 'LIST_PLAYER_API',
+    add: 'ADD_PLAYER_API',
+    show: 'SHOW_PLAYER_API',
+    edit: 'EDIT_PLAYER_API',
+    delete: 'DELETE_PLAYER_API',
+    toggleEdit: 'TOGGLE_PLAYER_EDIT'
   }
 }

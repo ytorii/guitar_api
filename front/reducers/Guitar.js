@@ -14,7 +14,7 @@ const guitarInitial = {
 
 const guitarReducer = {
 
-  [Actions.guitar.addGuitar]: {
+  [Actions.guitar.add]: {
     next: (state, action) => {
       return newState(state, {
         guitars: [...state.guitars, action.payload ]
@@ -28,7 +28,7 @@ const guitarReducer = {
     }
   },
 
-  [Actions.guitar.showGuitar]: {
+  [Actions.guitar.show]: {
     next: (state, action) => {
       return newState(state, {
         guitar: newState(action.payload, {isEdit: false}),
@@ -43,7 +43,7 @@ const guitarReducer = {
     }
   },
 
-  [Actions.guitar.editGuitar]: {
+  [Actions.guitar.edit]: {
     next: (state, action) => {
       return newState(state, {
         guitar: newState(action.payload, {isEdit: false}),
@@ -60,7 +60,7 @@ const guitarReducer = {
     }
   },
 
-  [Actions.guitar.deleteGuitar]: {
+  [Actions.guitar.delete]: {
     next: (state, action) => {
       return newState(state, {
         guitars: state.guitars.filter(g => g.id != action.payload) 

@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
-import Guitar              from './Guitar'
 import User                from './User'
+import Guitar              from './Guitar'
+import Player              from './Player'
 import Actions             from '../constants/Actions'
 
 const appReducer = combineReducers({
   User,
-  Guitar
+  Guitar,
+  Player
 })
 
 const rootReducer = (state, action) => appReducer(state, action)

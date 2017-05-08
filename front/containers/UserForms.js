@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
+import { newSessionAPI }    from '../api/User'
 import * as Actions         from '../actions/User'
 import SignUpForm           from '../components/SignUpForm'
 import SignInForm           from '../components/SignInForm'
