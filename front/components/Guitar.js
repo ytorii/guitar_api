@@ -42,6 +42,7 @@ class Guitar extends Component {
   }
 
   render(){
+    console.log(this.props.guitar)
     return (
       <div>
         <h3>Guitar Data</h3>
