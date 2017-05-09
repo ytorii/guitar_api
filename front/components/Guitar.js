@@ -49,7 +49,14 @@ class Guitar extends Component {
         <p>Players of this Guitar</p>
         <ul>
           { this.props.players.map((player) => 
-            <li key={player.id}>{ player.name }</li>
+            <li key={player.id}>
+              <div style={{display: 'inline-block', marginRight: 10}} >
+                name: { player.name }
+              </div>
+              <div style={{display: 'inline-block', marginRight: 10}} >
+                votes: { player.users_votes_count }
+              </div>
+            </li>
           )}
         </ul>
       </div>

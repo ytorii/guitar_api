@@ -26,3 +26,8 @@ players = Player.create([
   { name: 'Yngwie Malmsteen', email: 'ym@example.com', guitar_id: 3 },
   { name: 'John Petrucci', email: 'jp@example.com', guitar_id: 5 }
 ])
+
+usersvotes = UsersVote.create([
+  { user_id: 1, player_id: 1, amount: 2 },
+  { user_id: 1, player_id: 2, amount: 1 }
+])
