@@ -42,7 +42,6 @@ class Guitar extends Component {
   }
 
   render(){
-    console.log(this.props.guitar)
     return (
       <div>
         <h3>Guitar Data</h3>
@@ -56,6 +55,11 @@ class Guitar extends Component {
               </div>
               <div style={{display: 'inline-block', marginRight: 10}} >
                 votes: { player.users_votes_count }
+              </div>
+              <div style={{display: 'inline-block', marginRight: 10}} >
+               { player.user_voted &&
+                 <p> voted </p>
+               }
               </div>
             </li>
           )}

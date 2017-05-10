@@ -6,8 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts '===== Create initial data with seed file ====='
 users = User.create([
-  { email:'test@example.com', name: 'test1', nickname: '1stUser', password: '12345678', password_confirmation: '12345678' }
+  { email:'test@example.com', name: 'test1', nickname: '1stUser', password: '12345678', password_confirmation: '12345678' },
+  { email:'test2@example.com', name: 'test2', nickname: '2ndUser', password: '12345678', password_confirmation: '12345678' }
 ])
 
 guitars = Guitar.create([
@@ -29,5 +31,9 @@ players = Player.create([
 
 usersvotes = UsersVote.create([
   { user_id: 1, player_id: 1, amount: 2 },
-  { user_id: 1, player_id: 2, amount: 1 }
+  { user_id: 2, player_id: 1, amount: 1 },
+  { user_id: 1, player_id: 2, amount: 1 },
+  { user_id: 2, player_id: 3, amount: 1 }
 ])
+
+puts '===== Completed creating initial data ====='
