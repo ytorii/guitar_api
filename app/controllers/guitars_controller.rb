@@ -4,13 +4,13 @@ class GuitarsController < ApplicationController
 
   # GET /guitars
   def index
-    @guitars = Guitar.all
+    @guitars = Guitar.all.includes(:players)
     render json: @guitars
   end
 
   # GET /guitars/1
   def show
-    render json: @guitar, include: 'players'
+    render json: @guitar
   end
 
   # POST /guitars

@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
 
   # GET /players
   def index
-    @players = Guitar.find(params[:guitar_id]).players
+    @players = Player.find_by(guitar_id: params[:guitar_id])
     render json: @players
   end
 
