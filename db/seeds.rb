@@ -24,12 +24,12 @@ guitars = Guitar.create([
 
 puts '===== Create Player data ====='
 players = Player.create([
-  { name: 'Tak Matsumoto', email: 'tk@example.com', guitar_id: 1 },
-  { name: 'Zakk Wylde', email: 'zw@example.com', guitar_id: 1 },
-  { name: 'Tony Iommi', email: 'ti@example.com', guitar_id: 2 },
-  { name: 'Richie Blackmore', email: 'rb@example.com', guitar_id: 3 },
-  { name: 'Yngwie Malmsteen', email: 'ym@example.com', guitar_id: 3 },
-  { name: 'John Petrucci', email: 'jp@example.com', guitar_id: 5 }
+  { name: 'Tak Matsumoto', group: "B'z", guitar_id: 1 },
+  { name: 'Zakk Wylde', group: 'Black Label Society', guitar_id: 1 },
+  { name: 'Tony Iommi', group: 'Black Sabbath', guitar_id: 2 },
+  { name: 'Ritchie Blackmore', group: 'Deep Purple', guitar_id: 3 },
+  { name: 'Yngwie Malmsteen', group: 'Rising Force', guitar_id: 3 },
+  { name: 'John Petrucci', group: 'Dream Theater', guitar_id: 5 }
 ])
 
 puts '===== Create Vote data ====='

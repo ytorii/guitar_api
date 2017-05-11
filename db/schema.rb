@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511141923) do
+ActiveRecord::Schema.define(version: 20170511145329) do
 
   create_table "guitars", force: :cascade do |t|
     t.string "name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170511141923) do
   create_table "players", force: :cascade do |t|
     t.integer "guitar_id"
     t.string "name"
-    t.string "email"
+    t.string "group"
     t.integer "votes_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
