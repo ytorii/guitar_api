@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GuitarEditForm       from './GuitarEditForm'
+import Player               from './Player'
 
 class Guitar extends Component {
   onEditHandler(e){
@@ -49,19 +50,7 @@ class Guitar extends Component {
         <p>Players of this Guitar</p>
         <ul>
           { this.props.players.map((player) => 
-            <li key={player.id}>
-              <div style={{display: 'inline-block', marginRight: 10}} >
-                name: { player.name }
-              </div>
-              <div style={{display: 'inline-block', marginRight: 10}} >
-                votes: { player.votes_count }
-              </div>
-              <div style={{display: 'inline-block', marginRight: 10}} >
-               { player.user_voted &&
-                 <button> voted </button>
-               }
-              </div>
-            </li>
+            <Player key={ player.id } player={ player } />
           )}
         </ul>
       </div>
