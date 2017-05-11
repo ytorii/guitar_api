@@ -11,7 +11,12 @@ class GuitarsController < ApplicationController
 
   # GET /guitars/1
   def show
-    render json: @guitar, scope: { render_associations: true, current_user: current_user }
+    render json: @guitar,
+      scope: { 
+        render_associations: true,
+        current_user: current_user,
+        user_votes: user_votes
+      }
   end
 
   # POST /guitars
@@ -52,5 +57,9 @@ class GuitarsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def guitar_params
       params.require(:guitar).permit(:id, :name, :maker, :amount)
+    end
+
+    def user_votes
+      UsersVote.where(user_id: current_user.id) if current_user
     end
 end
