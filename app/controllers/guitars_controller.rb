@@ -4,13 +4,14 @@ class GuitarsController < ApplicationController
 
   # GET /guitars
   def index
-    @guitars = Guitar.all.includes(:players)
-    render json: @guitars
+    @guitars = Guitar.all
+    # Don't fetch players because these are needless for guitars list.
+    render json: @guitars, scope: { render_associations: false }
   end
 
   # GET /guitars/1
   def show
-    render json: @guitar
+    render json: @guitar, scope: { render_associations: true, current_user: current_user }
   end
 
   # POST /guitars

@@ -6,6 +6,8 @@ class PlayerSerializer < ActiveModel::Serializer
   has_many :users_votes
 
   def user_voted
-    UsersVote.where(user_id: current_user.id, player_id: object.id).present?
+    if scope[:current_user]
+      object.users_votes.any?{|vote| vote.user_id == scope[:current_user].id}
+    end
   end
 end
