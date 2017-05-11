@@ -54,7 +54,7 @@ class Guitar extends Component {
                 name: { player.name }
               </div>
               <div style={{display: 'inline-block', marginRight: 10}} >
-                votes: { player.users_votes_count }
+                votes: { player.votes_count }
               </div>
               <div style={{display: 'inline-block', marginRight: 10}} >
                { player.user_voted &&
