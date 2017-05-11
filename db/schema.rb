@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509084802) do
+ActiveRecord::Schema.define(version: 20170511141923) do
 
   create_table "guitars", force: :cascade do |t|
     t.string "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170509084802) do
     t.integer "guitar_id"
     t.string "name"
     t.string "email"
-    t.integer "users_votes_count", default: 0
+    t.integer "votes_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["guitar_id"], name: "index_players_on_guitar_id"
@@ -59,14 +59,14 @@ ActiveRecord::Schema.define(version: 20170509084802) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  create_table "users_votes", force: :cascade do |t|
+  create_table "votes", force: :cascade do |t|
     t.integer "amount"
     t.integer "user_id"
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_users_votes_on_player_id"
-    t.index ["user_id"], name: "index_users_votes_on_user_id"
+    t.index ["player_id"], name: "index_votes_on_player_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end

@@ -60,6 +60,10 @@ class GuitarsController < ApplicationController
     end
 
     def user_votes
-      UsersVote.where(user_id: current_user.id) if current_user
+      Vote.
+        where(
+          user_id: current_user.id,
+          player_id: @guitar.players.pluck(:id)
+      ) if current_user
     end
 end
