@@ -72,6 +72,20 @@ const guitarReducer = {
     }
   },
 
+  [Actions.player.add]: {
+    next: (state, action) => {
+      return newState(state, {
+        guitar: state.guitar.players.push(action.payload)
+      })
+    },
+
+    throw: (state, action) => {
+      return newState(state, {
+        errors: action.payload.messages
+      })
+    }
+  },
+
   [Actions.guitar.requestGuitar]:
     (state, action) => {
       return newState(state, {
