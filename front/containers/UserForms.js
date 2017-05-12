@@ -49,12 +49,6 @@ export class UserForms extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { 
-    isSending: state.User.isSending, 
-    isModalOpen: state.User.isModalOpen, 
-    user: state.User.user
-  }
-}
+const mapStateToProps = (state) => state.User
 
 export default connect( mapStateToProps, Actions)(UserForms)

@@ -7,17 +7,11 @@ class GuitarApp extends Component {
   render(){
     return (
       <div>
-        <UserForms isSignedIn={this.props.isSignedIn}/>
+        <UserForms />
         <GuitarContainers />
       </div>
     )
   }
 }
 
-const  mapStateToProps = (state) => {
-  return {
-    isSignedIn: state.User.isSignedIn,
-  }
-}
-
-export default connect(mapStateToProps)(GuitarApp)
+export default connect()(GuitarApp)
