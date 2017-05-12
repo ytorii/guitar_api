@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import { addGuitar }        from '../actions/Guitar'
+import { addPlayer }        from '../actions/Player'
 
-export class GuitarForm extends Component {
+export class PlayerAddForm extends Component {
   onSubmitHandler(e) {
     e.preventDefault()
     const params = {
       name: this.refs.inputName.value.trim(),
-      maker: this.refs.inputMaker.value.trim()
+      group: this.refs.inputGroup.value.trim(),
+      guitar_id: this.props.guitarId 
     }
-    this.props.addGuitar(params)
+    this.props.addPlayer(params)
   }
 
   componentDidUpdate(){
@@ -19,20 +20,20 @@ export class GuitarForm extends Component {
   render() {
     return (
       <div>
-        <p>Add your guitar!</p>
+        <p>Add your player!</p>
         <form onSubmit={ this.onSubmitHandler.bind(this) }>
           <div>
             <label>
-              Model Name:
+              Name:
               <input type="text" ref="inputName" />
             </label>
             <label>
-              Maker:
-              <input type="text" ref="inputMaker" />
+              Group:
+              <input type="text" ref="inputGroup" />
             </label>
           </div>
           <div>
-            <input type="submit" value="Add guitar" disabled={this.props.isSending}/>
+            <input type="submit" value="Add player" disabled={this.props.isSending}/>
             <input type="reset" value="reset" id='resetButton' style={{display: 'none'}}/>
           </div>
         </form>
@@ -45,4 +46,4 @@ const mapStateToProps = (state) => {
   return { isSending: state.Guitar.isFetching }
 }
 
-export default connect(mapStateToProps, { addGuitar } )(GuitarForm)
+export default connect(mapStateToProps, { addPlayer } )(PlayerAddForm)

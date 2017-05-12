@@ -75,7 +75,9 @@ const guitarReducer = {
   [Actions.player.add]: {
     next: (state, action) => {
       return newState(state, {
-        guitar: state.guitar.players.push(action.payload)
+        guitar: newState(state.guitar, {
+          players: [ ...state.guitar.players, action.payload ]
+        })
       })
     },
 

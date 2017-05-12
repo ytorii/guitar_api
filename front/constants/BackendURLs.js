@@ -8,6 +8,8 @@ export default {
     signOut: `${BackendURL}/auth/sign_out`
   },
   guitars: `${BackendURL}/guitars`,
-  guitar: (id) => `${BackendURL}/guitars/${id}`
+  guitar: (id) => `${BackendURL}/guitars/${id}`,
+  players: `${BackendURL}/players`,
+  player: (id) => `${BackendURL}/players/${id}`
 }
 

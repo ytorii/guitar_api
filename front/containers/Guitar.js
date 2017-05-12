@@ -3,6 +3,7 @@ import { connect }          from 'react-redux'
 import * as Actions         from '../actions/Guitar'
 import GuitarEditForm       from '../components/GuitarEditForm'
 import Player               from '../components/Player'
+import PlayerAddForm        from './PlayerAddForm'
 
 class Guitar extends Component {
   onDeleteHandler(e){
@@ -44,6 +45,8 @@ class Guitar extends Component {
       <div>
         <h3>Guitar Data</h3>
         { this.renderGuitar(this.props.guitar) }
+        <p>Add Players </p>
+        <PlayerAddForm guitarId={this.props.guitar.id} />
         <p>Players of this Guitar</p>
         { this.props.guitar.players &&
           <ul>

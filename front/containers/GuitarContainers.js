@@ -1,6 +1,6 @@
 import React , { Component } from 'react'
 import { connect }           from 'react-redux'
-import GuitarForm            from './GuitarForm'
+import GuitarAddForm         from './GuitarAddForm'
 import GuitarsList           from './GuitarsList'
 import MakerSelect           from './MakerSelect'
 
@@ -9,7 +9,7 @@ class GuitarContainers extends Component {
     return (
       <div>
         <h1> The guitars list </h1>
-        <GuitarForm />
+        <GuitarAddForm />
         <br />
         <MakerSelect />
         <GuitarsList />
