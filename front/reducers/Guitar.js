@@ -9,7 +9,6 @@ const guitarInitial = {
   selectedMaker: '',
   guitars: [],
   guitar: {},
-  players: []
 }
 
 const guitarReducer = {
@@ -32,7 +31,6 @@ const guitarReducer = {
     next: (state, action) => {
       return newState(state, {
         guitar: newState(action.payload, {isEdit: false}),
-        players: action.payload.players
       })
     },
 

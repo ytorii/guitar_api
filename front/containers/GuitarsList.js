@@ -42,7 +42,6 @@ class GuitarsList extends Component {
             <Modal isOpen={this.props.isModalOpen} onClose={this.props.toggleGuitarModal}>
               <Guitar
                 guitar={ this.props.guitar }
-                players={ this.props.players }
                 onEdit={ this.props.editGuitar }
                 toggleEdit={ this.props.toggleEdit }
                 onDelete={ this.props.deleteGuitar }
@@ -60,10 +59,10 @@ const filterMaker = (guitars, selectedMaker) => {
 }
 
 const mapStateToProps = (state) => {
-  const { guitar, guitars, players, isFetching, selectedMaker, isModalOpen } = state.Guitar
+  const { guitar, guitars, isFetching, selectedMaker, isModalOpen } = state.Guitar
   const guitarsList = selectedMaker ?  filterMaker(guitars, selectedMaker) : guitars
 
-  return { guitar, guitarsList, players, isFetching, isModalOpen }
+  return { guitar, guitarsList, isFetching, isModalOpen }
 }
 
 export default connect(mapStateToProps, Actions)(GuitarsList)

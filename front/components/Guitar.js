@@ -48,11 +48,13 @@ class Guitar extends Component {
         <h3>Guitar Data</h3>
         { this.renderGuitar(this.props.guitar) }
         <p>Players of this Guitar</p>
-        <ul>
-          { this.props.players.map((player) => 
-            <Player key={ player.id } player={ player } />
-          )}
-        </ul>
+        { this.props.guitar.players &&
+          <ul>
+            { this.props.guitar.players.map((player) => 
+              <Player key={ player.id } player={ player } />
+            )}
+          </ul>
+        }
       </div>
     )
   }
