@@ -20,7 +20,6 @@ export class PlayerAddForm extends Component {
   render() {
     return (
       <div>
-        <p>Add your player!</p>
         <form onSubmit={ this.onSubmitHandler.bind(this) }>
           <div>
             <label>

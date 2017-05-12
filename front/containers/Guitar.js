@@ -45,7 +45,7 @@ class Guitar extends Component {
       <div>
         <h3>Guitar Data</h3>
         { this.renderGuitar(this.props.guitar) }
-        <p>Add Players </p>
+        <p>Add Player </p>
         <PlayerAddForm guitarId={this.props.guitar.id} />
         <p>Players of this Guitar</p>
         { this.props.guitar.players &&
