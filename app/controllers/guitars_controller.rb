@@ -6,17 +6,12 @@ class GuitarsController < ApplicationController
   def index
     @guitars = Guitar.all
     # Don't fetch players because these are needless for guitars list.
-    render json: @guitars, scope: { render_associations: false }
+    render json: @guitars, scope: { fetch_players: false }
   end
 
   # GET /guitars/1
   def show
-    render json: @guitar,
-      scope: { 
-        render_associations: true,
-        current_user: current_user,
-        user_votes: user_votes
-      }
+    render json: @guitar, scope: fetch_players_scope 
   end
 
   # POST /guitars
@@ -33,9 +28,10 @@ class GuitarsController < ApplicationController
   # PATCH/PUT /guitars/1
   def update
     if @guitar.update(guitar_params)
-      render json: @guitar
+      render json: @guitar, scope: fetch_players_scope 
     else
-      render json: @guitar.errors, status: :unprocessable_entity
+      render json: @guitar.errors,
+        status: :unprocessable_entity, scope: fetch_players_scope 
     end
   end
 
@@ -59,11 +55,16 @@ class GuitarsController < ApplicationController
       params.require(:guitar).permit(:id, :name, :maker, :amount)
     end
 
+    def fetch_players_scope
+      { fetch_players: true,
+        current_user: current_user,
+        user_votes: user_votes }
+    end
+
     def user_votes
-      Vote.
-        where(
-          user_id: current_user.id,
-          player_id: @guitar.players.pluck(:id)
+      Vote.where(
+        user_id: current_user.id,
+        player_id: @guitar.players.pluck(:id)
       ) if current_user
     end
 end

@@ -1,7 +1,7 @@
 import React , { Component } from 'react'
 import { connect }           from 'react-redux'
 import * as Actions          from '../actions/Guitar'
-import Guitar                from '../components/Guitar'
+import Guitar                from './Guitar'
 import GuitarElememt         from '../components/GuitarElement'
 import GuitarEditForm        from '../components/GuitarEditForm'
 import Modal                 from '../components/Modal'
@@ -40,12 +40,9 @@ class GuitarsList extends Component {
               </tbody>
             </table>
             <Modal isOpen={this.props.isModalOpen} onClose={this.props.toggleGuitarModal}>
-              <Guitar
-                guitar={ this.props.guitar }
-                onEdit={ this.props.editGuitar }
-                toggleEdit={ this.props.toggleEdit }
-                onDelete={ this.props.deleteGuitar }
-              />
+              { this.props.isModalOpen &&
+                <Guitar />
+              }
             </Modal>
           </div>
         }
@@ -59,10 +56,10 @@ const filterMaker = (guitars, selectedMaker) => {
 }
 
 const mapStateToProps = (state) => {
-  const { guitar, guitars, isFetching, selectedMaker, isModalOpen } = state.Guitar
+  const { guitars, isFetching, selectedMaker, isModalOpen } = state.Guitar
   const guitarsList = selectedMaker ?  filterMaker(guitars, selectedMaker) : guitars
 
-  return { guitar, guitarsList, isFetching, isModalOpen }
+  return { guitarsList, isFetching, isModalOpen }
 }
 
 export default connect(mapStateToProps, Actions)(GuitarsList)

@@ -4,7 +4,6 @@ class GuitarSerializer < ActiveModel::Serializer
   has_many :players, if: :fetch_players 
 
   def fetch_players
-    scope[:render_associations]
+    scope[:fetch_players]
   end
-
 end
