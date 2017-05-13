@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 import * as Actions         from '../actions/Guitar'
 import GuitarEditForm       from '../components/GuitarEditForm'
-import Player               from '../components/Player'
+import Player               from './Player'
 import PlayerAddForm        from './PlayerAddForm'
 
 class Guitar extends Component {

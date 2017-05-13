@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect }          from 'react-redux'
+import * as Actions         from '../actions/Player'
+import Vote                 from './Vote'
 
 class Player extends Component {
   render(){
@@ -12,13 +15,18 @@ class Player extends Component {
           votes: { player.votes_count }
         </div>
         <div style={{display: 'inline-block', marginRight: 10}} >
-         { player.user_voted &&
-           <button> voted </button>
-         }
+          <Vote voted={player.user_voted} player_id={this.props.player.id} />
         </div>
       </li>
     )
   }
 }
 
-export default Player
+const mapStateToProps = (state) => {
+  return { 
+    isSending: state.Guitar.isSending,
+    guitar: state.Guitar.guitar
+  }
+}
+
+export default connect(mapStateToProps, Actions)(Player)

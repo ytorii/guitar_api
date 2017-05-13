@@ -94,7 +94,8 @@ const guitarReducer = {
         guitar: newState(state.guitar, {
           players: state.guitar.players.map( p => {
             if(p.id === action.payload.player_id){
-             p.user_voted = true
+              p.user_voted = true
+              p.votes_count++
             }
             return p
           })

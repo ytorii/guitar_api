@@ -11,7 +11,7 @@ export default {
   guitar: (id) => `${BackendURL}/guitars/${id}`,
   players: `${BackendURL}/players`,
   player: (id) => `${BackendURL}/players/${id}`,
-  votes: `${BackendURL}/votes`,
-  vote: (id) => `${BackendURL}/votes/${id}`
+  votes: (params) => `${BackendURL}/players/${params.player_id}/votes`,
+  vote: (params) => `${BackendURL}/players/${params.player_id}/vote/${params.id}`
 }
 
