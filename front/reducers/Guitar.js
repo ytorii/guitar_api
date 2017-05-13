@@ -88,6 +88,27 @@ const guitarReducer = {
     }
   },
 
+  [Actions.vote.add]: {
+    next: (state, action) => {
+      return newState(state, {
+        guitar: newState(state.guitar, {
+          players: state.guitar.players.map( p => {
+            if(p.id === action.payload.player_id){
+             p.user_voted = true
+            }
+            return p
+          })
+        })
+      })
+    },
+
+    throw: (state, action) => {
+      return newState(state, {
+        errors: action.payload.messages
+      })
+    }
+  },
+
   [Actions.guitar.requestGuitar]:
     (state, action) => {
       return newState(state, {
