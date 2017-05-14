@@ -14,25 +14,25 @@ export const recieveGuitar = createAction(Actions.guitar.recieveGuitar)
 
 export const fetchGuitars = () => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.createList), 
-    GuitarAPI.fetch, null, [ requestGuitar ])
+    GuitarAPI.fetch(), [ requestGuitar ])
 }
 
 export const addGuitar = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.add),
-    GuitarAPI.add, params, [ requestGuitar ])
+    GuitarAPI.add(params), [ requestGuitar ])
 }
 
 export const showGuitar = (id) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.show),
-    GuitarAPI.show, id, [ requestGuitar, toggleGuitarModal ])
+    GuitarAPI.show(id), [ requestGuitar, toggleGuitarModal ])
 }
 
 export const editGuitar = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.edit),
-    GuitarAPI.edit, params, [ requestGuitar ])
+    GuitarAPI.edit(params), [ requestGuitar ])
 }
 
 export const deleteGuitar = (id) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.delete),
-    GuitarAPI.del, id, [ requestGuitar, toggleGuitarModal ])
+    GuitarAPI.del(id), [ requestGuitar, toggleGuitarModal ])
 }

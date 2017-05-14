@@ -8,15 +8,16 @@ const GuitarRecord = Record({
   isEdit: false
 })
 
-export const GuitarType = PropTypes.shape({
+const GuitarType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   maker: PropTypes.string.isRequired,
   isEdit: PropTypes.bool.isRequired,
+  entityId: PropTypes.string.isRequired
 })
 
 export default class Guitar extends GuitarRecord {
-  isEdit(){
+  get isEdit(){
     return this.isEdit
   }
 }

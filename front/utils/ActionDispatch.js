@@ -1,13 +1,22 @@
+import { normalize } from 'normalizr'
+import GuitarSchema from '../schemas/Guitar'
+
+const schema = [ GuitarSchema ]
+
 const ActionDispatch = {
-  executeApi(action, api, apiParams, extraActions, errorUrl){
+  executeApi(action, api, extraActions, errorUrl){
     return dispatch => {
       if(extraActions){
         extraActions.map((action) => {
           dispatch(action())
         })
       }
-      return api(apiParams)
-        .then(json => dispatch(action(json)))
+      return api
+        .then(json => {
+          const { result, entities } = normalize( json, schema)
+          console.log({ result, entities })
+          return dispatch(action(json))
+        })
     }
   }
 }

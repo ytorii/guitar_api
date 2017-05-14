@@ -1,5 +1,5 @@
-//const BackendURL = 'http://192.168.0.8:3000'
-const BackendURL = 'http://localhost:3000'
+const BackendURL = 'http://192.168.0.8:3000'
+//const BackendURL = 'http://localhost:3000'
 
 export default {
   user: {
