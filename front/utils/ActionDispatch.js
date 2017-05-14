@@ -14,8 +14,7 @@ const ActionDispatch = {
       return api
         .then(json => {
           const { result, entities } = normalize( json, schema)
-          console.log({ result, entities })
-          return dispatch(action(json))
+          return dispatch(action({ result, entities }))
         })
     }
   }
