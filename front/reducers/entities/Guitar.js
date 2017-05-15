@@ -1,11 +1,13 @@
 import { handleActions }   from 'redux-actions'
 import Actions             from '../../constants/Actions'
+import Guitar              from '../../models/Guitar'
+import _                   from 'lodash'
 
 const newState = (state, data) => Object.assign({}, state, data)
 
 const guitarInitial = {
   guitars: [],
-  guitar: {},
+  guitar: {}
 }
 
 const guitarReducer = {
@@ -123,10 +125,9 @@ const guitarReducer = {
 //
   [Actions.guitar.createList]: {
     next: (state, action) => {
-      console.log(state)
-      console.log(state.update)
+      const guitars = action.payload.entities.guitars
       return newState(state, {
-        test: action.payload.entities.guitars
+        guitars: _.mapValues(guitars, g => new Guitar(g))
       })
     },
 

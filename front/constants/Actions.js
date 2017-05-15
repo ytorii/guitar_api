@@ -1,18 +1,18 @@
 export default {
   user: {
-    signUp: 'SIGN_UP',
-    signIn: 'SIGN_IN',
-    signOut: 'SIGN_OUT',
+    signUp: 'SIGN_UP_API',
+    signIn: 'SIGN_IN_API',
+    signOut: 'SIGN_OUT_API',
     sendCredentials: 'SEND_CREDENTIALS',
     toggleModal: 'TOGGLE_USER_MODAL'
   },
 
   guitar: {
-    createList: 'LIST_GUITAR_API',
+    show: 'SHOW_GUITAR',
     add: 'ADD_GUITAR_API',
-    show: 'SHOW_GUITAR_API',
     edit: 'EDIT_GUITAR_API',
     delete: 'DELETE_GUITAR_API',
+    createList: 'LIST_GUITAR_API',
     requestGuitar: 'REQUEST_GUITAR',
     recieveGuitar: 'RECIEVE_GUITAR',
     selectMaker: 'SELECT_GUITAR_MAKER',

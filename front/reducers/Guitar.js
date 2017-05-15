@@ -8,7 +8,7 @@ const guitarInitial = {
   isModalOpen: false,
   selectedMaker: '',
   guitars: [],
-  guitar: {},
+  guitar: {isEdit: false}
 }
 
 const guitarReducer = {
@@ -30,7 +30,8 @@ const guitarReducer = {
   [Actions.guitar.show]: {
     next: (state, action) => {
       return newState(state, {
-        guitar: newState(action.payload, {isEdit: false}),
+        isModalOpen: true,
+        guitar: newState(state.guitar, { entityId: action.payload })
       })
     },
 
@@ -127,7 +128,7 @@ const guitarReducer = {
   [Actions.guitar.createList]: {
     next: (state, action) => {
       return newState(state, {
-        guitars: action.payload
+        guitars: action.payload.result
       })
     },
 

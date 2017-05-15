@@ -2,7 +2,7 @@ import React , { Component } from 'react'
 import { connect }           from 'react-redux'
 import * as Actions          from '../actions/Guitar'
 import Guitar                from './Guitar'
-import GuitarElememt         from '../components/GuitarElement'
+import GuitarElememt         from './GuitarElement'
 import GuitarEditForm        from '../components/GuitarEditForm'
 import Modal                 from '../components/Modal'
 
@@ -11,11 +11,11 @@ class GuitarsList extends Component {
     this.props.fetchGuitars()
   }
 
-  renderGuitar(guitar){
+  renderGuitar(entityId){
     return (
       <GuitarElememt
-        params={ guitar }
-        key={ guitar.id }
+        key={ entityId }
+        entityId={ entityId }
         onShow={ this.props.showGuitar }
       /> 
     )
@@ -34,8 +34,8 @@ class GuitarsList extends Component {
                 <tr><th>ModelName</th><th>Maker</th></tr>
               </thead>
               <tbody>
-                { this.props.guitarsList.map((guitar) =>
-                    this.renderGuitar(guitar)
+                { this.props.guitars.map((entityId) =>
+                    this.renderGuitar(entityId)
                 )}
               </tbody>
             </table>
@@ -59,7 +59,8 @@ const mapStateToProps = (state) => {
   const { guitars, isFetching, selectedMaker, isModalOpen } = state.Guitar
   const guitarsList = selectedMaker ?  filterMaker(guitars, selectedMaker) : guitars
 
-  return { guitarsList, isFetching, isModalOpen }
+  //return { guitarsList, isFetching, isModalOpen }
+  return { guitars, isFetching, isModalOpen }
 }
 
 export default connect(mapStateToProps, Actions)(GuitarsList)

@@ -11,9 +11,9 @@ class Guitar extends Component {
     this.props.deleteGuitar(this.props.guitar.id)
   }
 
-  renderGuitar(guitar){
+  renderGuitar(guitar, isEdit){
     return (
-      guitar.isEdit ? 
+      isEdit ? 
         <GuitarEditForm
           guitar={ guitar }
           key={ guitar.id }
@@ -41,16 +41,17 @@ class Guitar extends Component {
   }
 
   render(){
+    const { guitar, isEdit } = this.props
     return (
       <div>
         <h3>Guitar Data</h3>
-        { this.renderGuitar(this.props.guitar) }
+        { this.renderGuitar(guitar, isEdit) }
         <p>Add Player </p>
-        <PlayerAddForm guitarId={this.props.guitar.id} />
+        <PlayerAddForm guitarId={guitar.id} />
         <p>Players of this Guitar</p>
-        { this.props.guitar.players &&
+        { guitar.players &&
           <ul>
-            { this.props.guitar.players.map((player) => 
+            { guitar.players.map((player) => 
               <Player key={ player.id } player={ player } />
             )}
           </ul>
@@ -61,7 +62,11 @@ class Guitar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { guitar: state.Guitar.guitar }
+  const guitar = state.Guitar.guitar
+  return { 
+    guitar: state.entities.Guitar.guitars[guitar.entityId],
+    isEdit: guitar.isEdit
+  }
 }
 
 export default connect(mapStateToProps, Actions)(Guitar)
