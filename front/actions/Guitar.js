@@ -1,10 +1,14 @@
 import { createAction } from 'redux-actions'
 import Actions          from '../constants/Actions'
-import * as GuitarAPI  from '../api/Guitar'
+import * as GuitarAPI   from '../api/Guitar'
+import GuitarSchema     from '../schemas/Guitar'
 import ActionDispatch   from '../utils/ActionDispatch'
+
+const schema = [ GuitarSchema ]
 
 export const selectMaker = createAction(Actions.guitar.selectMaker,
   (maker) => { return { selectedMaker: maker } } )
+
 export const toggleEdit = createAction(Actions.guitar.toggleEdit)
 export const toggleGuitarModal = createAction(Actions.guitar.toggleModal)
 
@@ -14,8 +18,8 @@ export const recieveGuitar = createAction(Actions.guitar.recieveGuitar)
 export const showGuitar = createAction(Actions.guitar.show)
 
 export const fetchGuitars = () => {
-  return ActionDispatch.executeApi(createAction(Actions.guitar.createList), 
-    GuitarAPI.fetch(), [ requestGuitar ])
+  return ActionDispatch.normalizeExecuteApi(createAction(Actions.guitar.createList), 
+    GuitarAPI.fetch(), [ requestGuitar ], schema)
 }
 
 export const addGuitar = (params) => {

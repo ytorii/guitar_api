@@ -1,13 +1,12 @@
 import { handleActions }   from 'redux-actions'
+import _                   from 'lodash'
 import Actions             from '../../constants/Actions'
 import Guitar              from '../../models/Guitar'
-import _                   from 'lodash'
 
 const newState = (state, data) => Object.assign({}, state, data)
 
 const guitarInitial = {
-  guitars: [],
-  guitar: {}
+  guitars: {} 
 }
 
 const guitarReducer = {
@@ -40,37 +39,36 @@ const guitarReducer = {
 //    }
 //  },
 //
-//  [Actions.guitar.edit]: {
-//    next: (state, action) => {
-//      return newState(state, {
-//        guitar: newState(action.payload, {isEdit: false}),
-//        guitars: state.guitars.map( g => {
-//          return g.id == action.payload.id ? action.payload : g
-//        })
-//      })
-//    },
-//
-//    throw: (state, action) => {
-//      return newState(state, {
-//        errors: action.payload.messages
-//      })
-//    }
-//  },
-//
-//  [Actions.guitar.delete]: {
-//    next: (state, action) => {
-//      return newState(state, {
-//        guitars: state.guitars.filter(g => g.id != action.payload) 
-//      })
-//    },
-//
-//    throw: (state, action) => {
-//      return newState(state, {
-//        errors: action.payload.messages
-//      })
-//    }
-//  },
-//
+  [Actions.guitar.edit]: {
+    next: (state, action) => {
+      return newState(state, {
+        guitars: _.mapValues(state.guitars, ( g => {
+          return g.id == action.payload.id ? new Guitar(action.payload) : g
+        }))
+      })
+    },
+
+    throw: (state, action) => {
+      return newState(state, {
+        errors: action.payload.messages
+      })
+    }
+  },
+
+  [Actions.guitar.delete]: {
+    next: (state, action) => {
+      return newState(state, {
+        guitars: state.guitars.filter(g => g.id != action.payload) 
+      })
+    },
+
+    throw: (state, action) => {
+      return newState(state, {
+        errors: action.payload.messages
+      })
+    }
+  },
+
 //  [Actions.player.add]: {
 //    next: (state, action) => {
 //      return newState(state, {

@@ -45,10 +45,7 @@ const guitarReducer = {
   [Actions.guitar.edit]: {
     next: (state, action) => {
       return newState(state, {
-        guitar: newState(action.payload, {isEdit: false}),
-        guitars: state.guitars.map( g => {
-          return g.id == action.payload.id ? action.payload : g
-        })
+        guitar: newState(state.guitar, {isEdit: false})
       })
     },
 

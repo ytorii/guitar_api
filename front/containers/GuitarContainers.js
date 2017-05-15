@@ -11,7 +11,6 @@ class GuitarContainers extends Component {
         <h1> The guitars list </h1>
         <GuitarAddForm />
         <br />
-        <MakerSelect />
         <GuitarsList />
       </div>
     )
