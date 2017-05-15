@@ -5,8 +5,7 @@ import ActionDispatch   from '../utils/ActionDispatch'
 
 export const selectMaker = createAction(Actions.guitar.selectMaker,
   (maker) => { return { selectedMaker: maker } } )
-export const toggleEdit = createAction(Actions.guitar.toggleEdit,
-  (id) => { return { id: id } } )
+export const toggleEdit = createAction(Actions.guitar.toggleEdit)
 export const toggleGuitarModal = createAction(Actions.guitar.toggleModal)
 
 export const requestGuitar = createAction(Actions.guitar.requestGuitar)
