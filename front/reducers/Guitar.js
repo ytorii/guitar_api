@@ -59,7 +59,8 @@ const guitarReducer = {
   [Actions.guitar.delete]: {
     next: (state, action) => {
       return newState(state, {
-        guitars: state.guitars.filter(g => g.id != action.payload) 
+        guitars: state.guitars.filter(id => id != action.payload),
+        isModalOpen: false
       })
     },
 
