@@ -23,13 +23,13 @@ export const fetchGuitars = () => {
 }
 
 export const addGuitar = (params) => {
-  return ActionDispatch.executeApi(createAction(Actions.guitar.add),
-    GuitarAPI.add(params), [ requestGuitar ])
+  return ActionDispatch.executeApi(createAction(Actions.guitar.createList),
+    GuitarAPI.add(params), [ requestGuitar ], schema)
 }
 
 export const editGuitar = (params) => {
-  return ActionDispatch.executeApi(createAction(Actions.guitar.edit),
-    GuitarAPI.edit(params), [ requestGuitar ])
+  return ActionDispatch.executeApi(createAction(Actions.guitar.createList),
+    GuitarAPI.edit(params), [ requestGuitar ], schema)
 }
 
 export const deleteGuitar = (id) => {

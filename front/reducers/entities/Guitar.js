@@ -10,27 +10,12 @@ const guitarInitial = {
 }
 
 const guitarReducer = {
-//
-//  [Actions.guitar.add]: {
-//    next: (state, action) => {
-//      return newState(state, {
-//        guitars: [...state.guitars, action.payload ]
-//      })
-//    },
-//
-//    throw: (state, action) => {
-//      return newState(state, {
-//        errors: action.payload.messages
-//      })
-//    }
-//  },
-//
-  [Actions.guitar.edit]: {
+
+  [Actions.guitar.createList]: {
     next: (state, action) => {
+      const guitars = action.payload.entities.guitars
       return newState(state, {
-        guitars: _.mapValues(state.guitars, ( g => {
-          return g.id == action.payload.id ? new Guitar(action.payload) : g
-        }))
+        guitars: newState(state.guitars, _.mapValues(guitars, g => new Guitar(g)))
       })
     },
 
@@ -47,21 +32,6 @@ const guitarReducer = {
         guitars: _.pickBy(state.guitars, ( g => {
           return g.id != action.payload
         }))
-      })
-    },
-
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
-  },
-
-  [Actions.guitar.createList]: {
-    next: (state, action) => {
-      const guitars = action.payload.entities.guitars
-      return newState(state, {
-        guitars: _.mapValues(guitars, g => new Guitar(g))
       })
     },
 

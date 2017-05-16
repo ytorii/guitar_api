@@ -15,8 +15,9 @@ const guitarReducer = {
 
   [Actions.guitar.add]: {
     next: (state, action) => {
+      console.log(action.payload)
       return newState(state, {
-        guitars: [...state.guitars, action.payload ]
+        guitars: [...state.guitars, action.payload.result[0] ]
       })
     },
 
@@ -45,7 +46,7 @@ const guitarReducer = {
   [Actions.guitar.edit]: {
     next: (state, action) => {
       return newState(state, {
-        guitar: newState(state.guitar, {isEdit: false})
+        guitar: newState(state.guitar, { isEdit: false })
       })
     },
 
@@ -126,7 +127,8 @@ const guitarReducer = {
   [Actions.guitar.createList]: {
     next: (state, action) => {
       return newState(state, {
-        guitars: action.payload.result
+        guitars: _.union(state.guitars, action.payload.result),
+        guitar: newState(state.guitar, {isEdit: false})
       })
     },
 
