@@ -15,7 +15,7 @@ class Player extends Component {
           votes: { player.votes_count }
         </div>
         <div style={{display: 'inline-block', marginRight: 10}} >
-          <Vote voted={player.user_voted} playerId={player.id} />
+          <Vote userVoted={player.user_voted} playerId={player.id} />
         </div>
       </li>
     )

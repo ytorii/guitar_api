@@ -4,6 +4,6 @@ class PlayerSerializer < ActiveModel::Serializer
   attribute :user_voted, if: :scope
 
   def user_voted
-    object.votes.any?{ |vote| vote.id == scope.id }
+    object.votes.any?{ |vote| vote.user_id == scope.id }
   end
 end

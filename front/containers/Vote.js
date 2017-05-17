@@ -12,15 +12,15 @@ class Vote extends Component {
   }
 
   render(){
-    const { voted } = this.props
+    const { userVoted } = this.props
     return (
       <div>
-        { !voted &&
+        { !userVoted &&
           <button onClick={ this.onSubmitHandler.bind(this) } disabled={ this.props.isSending }>
             vote!
           </button>
         }
-        { voted &&
+        { userVoted &&
           <div>voted</div>
         }
       </div>
@@ -31,7 +31,6 @@ class Vote extends Component {
 const mapStateToProps = (state, ownProps) => {
   return { 
     isSending: state.Guitar.isSending
-    //userVoted : state.entities.Player.players[ownProps.playerId]
   }
 }
 
