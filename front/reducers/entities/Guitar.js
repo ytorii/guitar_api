@@ -15,7 +15,7 @@ const guitarReducer = {
     next: (state, action) => {
       const guitars = action.payload.entities.guitars
       return newState(state, {
-        guitars: newState(state.guitars, _.mapValues(guitars, g => new Guitar(g)))
+        guitars: _.merge({}, state.guitars, _.mapValues(guitars, g => new Guitar(g)))
       })
     },
 

@@ -22,10 +22,11 @@ class Player extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const entityId = ownProps.entityId
   return { 
     isSending: state.Guitar.isSending,
-    guitar: state.Guitar.guitar
+    player: state.entities.Player.players[entityId],
   }
 }
 

@@ -41,7 +41,7 @@ class Guitar extends Component {
   }
 
   render(){
-    const { guitar, isEdit } = this.props
+    const { guitar, isEdit, players } = this.props
     return (
       <div>
         <h3>Guitar Data</h3>
@@ -51,8 +51,8 @@ class Guitar extends Component {
         <p>Players of this Guitar</p>
         { guitar.players &&
           <ul>
-            { guitar.players.map((player) => 
-              <Player key={ player.id } player={ player } />
+            { guitar.players.map((id) => 
+              <Player key={ id } entityId={ id } />
             )}
           </ul>
         }
@@ -62,10 +62,11 @@ class Guitar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const guitar = state.Guitar.guitar
+  const { entityId, isEdit } = state.Guitar.guitar
+
   return { 
-    guitar: state.entities.Guitar.guitars[guitar.entityId],
-    isEdit: guitar.isEdit
+    guitar: state.entities.Guitar.guitars[entityId],
+    isEdit: isEdit,
   }
 }
 

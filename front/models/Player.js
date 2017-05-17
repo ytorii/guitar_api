@@ -19,8 +19,4 @@ export const PlayerType = PropTypes.shape({
   user_voted: PropTypes.bool.isRequired,
 })
 
-export default class Player extends PlayerRecord {
-  user_voted(){
-    return user_voted
-  }
-}
+export default class Player extends PlayerRecord {}

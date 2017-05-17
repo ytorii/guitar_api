@@ -6,7 +6,7 @@ class GuitarsController < ApplicationController
   def index
     @guitars = Guitar.all.includes(:players)
     # Set fetch players 'false' when players are unneeded.
-    render json: @guitars, scope: { fetch_players: true }
+    render json: @guitars
   end
 
   # GET /guitars/1
@@ -56,8 +56,7 @@ class GuitarsController < ApplicationController
     end
 
     def fetch_players_scope
-      { fetch_players: true,
-        current_user: current_user,
+      { current_user: current_user,
         user_votes: user_votes }
     end
 

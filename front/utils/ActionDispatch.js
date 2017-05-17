@@ -1,9 +1,7 @@
 import { normalize } from 'normalizr'
 
 const normalizeJson = (json, schema) => {
-  console.log(json)
   json = json instanceof Array ? json : [ json ]
-  console.log(normalize(json, schema))
   return schema ? normalize(json, schema) : json
 }
 
