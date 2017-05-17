@@ -11,7 +11,7 @@ const guitarInitial = {
 
 const guitarReducer = {
 
-  [Actions.guitar.createList]: {
+  [Actions.guitar.merge]: {
     next: (state, action) => {
       const guitars = action.payload.entities.guitars
       return newState(state, {

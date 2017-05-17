@@ -9,10 +9,8 @@ export default {
 
   guitar: {
     show: 'SHOW_GUITAR',
-    add: 'ADD_GUITAR_API',
-    edit: 'EDIT_GUITAR_API',
+    merge: 'MERGE_GUITAR_API',
     delete: 'DELETE_GUITAR_API',
-    createList: 'LIST_GUITAR_API',
     requestGuitar: 'REQUEST_GUITAR',
     recieveGuitar: 'RECIEVE_GUITAR',
     selectMaker: 'SELECT_GUITAR_MAKER',

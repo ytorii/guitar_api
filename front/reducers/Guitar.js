@@ -12,12 +12,11 @@ const guitarInitial = {
 }
 
 const guitarReducer = {
-
-  [Actions.guitar.add]: {
+  [Actions.guitar.merge]: {
     next: (state, action) => {
-      console.log(action.payload)
       return newState(state, {
-        guitars: [...state.guitars, action.payload.result[0] ]
+        guitars: _.union(state.guitars, action.payload.result),
+        guitar: newState(state.guitar, {isEdit: false})
       })
     },
 
@@ -27,26 +26,13 @@ const guitarReducer = {
       })
     }
   },
+
 
   [Actions.guitar.show]: {
     next: (state, action) => {
       return newState(state, {
         isModalOpen: true,
         guitar: newState(state.guitar, { entityId: action.payload })
-      })
-    },
-
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
-  },
-
-  [Actions.guitar.edit]: {
-    next: (state, action) => {
-      return newState(state, {
-        guitar: newState(state.guitar, { isEdit: false })
       })
     },
 
@@ -123,21 +109,6 @@ const guitarReducer = {
         isFetching: false
       })
     },
-
-  [Actions.guitar.createList]: {
-    next: (state, action) => {
-      return newState(state, {
-        guitars: _.union(state.guitars, action.payload.result),
-        guitar: newState(state.guitar, {isEdit: false})
-      })
-    },
-
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
-  },
 
   [Actions.guitar.selectMaker]:
     (state, action) => {

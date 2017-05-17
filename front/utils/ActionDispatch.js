@@ -1,30 +1,24 @@
 import { normalize } from 'normalizr'
 
+const normalizeJson = (json, schema) => {
+  json = json instanceof Array ? json : [ json ]
+  return schema ? normalize(json, schema) : json
+}
+
+const dispatchActions = (dispatch, actions) => {
+  if(actions){
+    actions.map((action) => { dispatch(action()) })
+  }
+}      
+
 const ActionDispatch = {
   executeApi(action, api, extraActions, schema, errorUrl){
     return dispatch => {
-      if(extraActions){
-        extraActions.map((action) => { dispatch(action()) })
-      }
+      dispatchActions(dispatch, extraActions)
       return api
         .then(json => {
-          const { result, entities } = normalize( [ json ], schema)
-          console.log({ result, entities })
-          return dispatch(action({ result, entities }))
-          //return dispatch(action(json))
-        })
-    }
-  },
-
-  normalizeExecuteApi(action, api, extraActions, schema, errorUrl){
-    return dispatch => {
-      if(extraActions){
-        extraActions.map((action) => { dispatch(action()) })
-      }
-      return api
-        .then(json => {
-          const { result, entities } = normalize( json, schema)
-          return dispatch(action({ result, entities }))
+          json = normalizeJson(json, schema)
+          return dispatch(action(json))
         })
     }
   }

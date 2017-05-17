@@ -18,17 +18,17 @@ export const recieveGuitar = createAction(Actions.guitar.recieveGuitar)
 export const showGuitar = createAction(Actions.guitar.show)
 
 export const fetchGuitars = () => {
-  return ActionDispatch.normalizeExecuteApi(createAction(Actions.guitar.createList), 
+  return ActionDispatch.executeApi(createAction(Actions.guitar.merge), 
     GuitarAPI.fetch(), [ requestGuitar ], schema)
 }
 
 export const addGuitar = (params) => {
-  return ActionDispatch.executeApi(createAction(Actions.guitar.createList),
+  return ActionDispatch.executeApi(createAction(Actions.guitar.merge),
     GuitarAPI.add(params), [ requestGuitar ], schema)
 }
 
 export const editGuitar = (params) => {
-  return ActionDispatch.executeApi(createAction(Actions.guitar.createList),
+  return ActionDispatch.executeApi(createAction(Actions.guitar.merge),
     GuitarAPI.edit(params), [ requestGuitar ], schema)
 }
 
