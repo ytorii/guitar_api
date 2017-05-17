@@ -6,21 +6,21 @@ class Vote extends Component {
   onSubmitHandler(e) {
     e.preventDefault()
     const params = {
-      player_id: this.props.player_id 
+      player_id: this.props.playerId 
     }
     this.props.addVote(params)
   }
 
   render(){
-    const player = this.props.players.find( p => p.id === this.props.player_id )
+    const { voted } = this.props
     return (
       <div>
-        { !player.user_voted &&
-          <button onClick={ this.onSubmitHandler.bind(this) } disabled={ this.props.isSending}>
+        { !voted &&
+          <button onClick={ this.onSubmitHandler.bind(this) } disabled={ this.props.isSending }>
             vote!
           </button>
         }
-        { player.user_voted &&
+        { voted &&
           <div>voted</div>
         }
       </div>
@@ -28,10 +28,10 @@ class Vote extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return { 
-    players: state.Guitar.guitar.players,
     isSending: state.Guitar.isSending
+    //userVoted : state.entities.Player.players[ownProps.playerId]
   }
 }
 
