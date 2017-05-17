@@ -1,7 +1,7 @@
-import { handleActions }   from 'redux-actions'
-import _                   from 'lodash'
-import Actions             from '../../constants/Actions'
-import Guitar              from '../../models/Guitar'
+import { handleActions } from 'redux-actions'
+import _                 from 'lodash'
+import Actions           from '../../constants/Actions'
+import Guitar            from '../../models/Guitar'
 
 const newState = (state, data) => Object.assign({}, state, data)
 
