@@ -4,9 +4,9 @@ class GuitarsController < ApplicationController
 
   # GET /guitars
   def index
-    @guitars = Guitar.all
-    # Don't fetch players because these are needless for guitars list.
-    render json: @guitars, scope: { fetch_players: false }
+    @guitars = Guitar.all.includes(:players)
+    # Set fetch players 'false' when players are unneeded.
+    render json: @guitars, scope: { fetch_players: true }
   end
 
   # GET /guitars/1
