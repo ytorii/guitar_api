@@ -23,11 +23,12 @@ const guitarPlayerReducer = {
   [Actions.player.merge]: {
     next: (state, action) => {
       const playerId = action.payload.result[0]
-      const players = action.payload.entities.players
+      const player = action.payload.entities.players[playerId]
+      const guitarId = player.guitar_id
       return newState(state, {
-        guitarPlayers: _.merge({}, state.guitarPlayers, 
-          _.mapValues(guitars, g => g.players)
-        )
+        guitarPlayers: newState(state.guitarPlayers, {
+          [guitarId]: _.union(state.guitarPlayers[guitarId], [playerId])
+        })
       })
     }
   }
