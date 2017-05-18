@@ -49,9 +49,9 @@ class Guitar extends Component {
         <p>Add Player </p>
         <PlayerAddForm guitarId={guitar.id} />
         <p>Players of this Guitar</p>
-        { guitar.players &&
+        { players &&
           <ul>
-            { guitar.players.map((id) => 
+            { players.map((id) => 
               <Player key={ id } entityId={ id } />
             )}
           </ul>
@@ -63,9 +63,9 @@ class Guitar extends Component {
 
 const mapStateToProps = (state) => {
   const { entityId, isEdit } = state.Guitar.guitar
-
   return { 
     guitar: state.entities.Guitar.guitars[entityId],
+    players: state.GuitarPlayer.guitarPlayers[entityId],
     isEdit: isEdit,
   }
 }

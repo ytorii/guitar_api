@@ -58,22 +58,6 @@ const guitarReducer = {
     }
   },
 
-  [Actions.player.add]: {
-    next: (state, action) => {
-      return newState(state, {
-        guitar: newState(state.guitar, {
-          players: [ ...state.guitar.players, action.payload ]
-        })
-      })
-    },
-
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
-  },
-
   [Actions.vote.add]: {
     next: (state, action) => {
       return newState(state, {
@@ -119,6 +103,13 @@ const guitarReducer = {
 
   [Actions.guitar.toggleEdit]:
     (state, action) => {
+      console.log(
+        { ...state, 
+          guitar: { ...state.guitar,
+            isEdit: !state.guitar.isEdit
+          }
+        }
+      )
       return newState(state, {
         guitar: newState(state.guitar, {isEdit: !state.guitar.isEdit})
       })

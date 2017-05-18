@@ -1,12 +1,15 @@
 import { normalize } from 'normalizr'
 
 const normalizeJson = (json, schema) => {
-  console.log(json)
-  json = json instanceof Array ? json : [ json ]
-  return schema ? normalize(json, schema) : json
+  if(schema){
+    json = json instanceof Array ? json : [ json ]
+    return normalize(json, schema)
+  }
+
+  return json
 }
 
-const dispatchActions = (dispatch, actions) => {
+const dispatchExtraActions = (dispatch, actions) => {
   if(actions){
     actions.map((action) => { dispatch(action()) })
   }
@@ -15,7 +18,7 @@ const dispatchActions = (dispatch, actions) => {
 const ActionDispatch = {
   executeApi(action, api, extraActions, schema, errorUrl){
     return dispatch => {
-      dispatchActions(dispatch, extraActions)
+      dispatchExtraActions(dispatch, extraActions)
       return api
         .then(json => {
           json = normalizeJson(json, schema)

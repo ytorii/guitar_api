@@ -28,9 +28,9 @@ const playerReducer = {
 
   [Actions.player.merge]: {
     next: (state, action) => {
-      const players = action.payload.entities.players
+      const player = action.paylod
       return newState(state, {
-        players: newState(state.players, _.mapValues(players, p => new Player(p)))
+        players: _.merge({}, state.players, _.mapValues(players, p => new Player(p)))
       })
     },
 

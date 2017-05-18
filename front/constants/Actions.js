@@ -19,12 +19,9 @@ export default {
   },
 
   player: {
-    createList: 'LIST_PLAYER_API',
-    add: 'ADD_PLAYER_API',
+    merge: 'MERGE_PLAYER_API',
     show: 'SHOW_PLAYER_API',
-    edit: 'EDIT_PLAYER_API',
-    delete: 'DELETE_PLAYER_API',
-    toggleEdit: 'TOGGLE_PLAYER_EDIT'
+    delete: 'DELETE_PLAYER_API'
   },
 
   vote: {
