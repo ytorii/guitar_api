@@ -7,7 +7,8 @@ class VotesController < ApplicationController
     @vote = Vote.new(vote_params.merge(user_id: current_user.id))
 
     if @vote.save
-      render json: @vote, status: :created
+      @player = Player.find(@vote.player_id)
+      render json: @player, status: :created
     else
       render json: @vote.errors, status: :unprocessable_entity
     end

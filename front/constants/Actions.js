@@ -25,7 +25,6 @@ export default {
   },
 
   vote: {
-    add: 'ADD_VOTE_API',
-    delete: 'DELETE_VOTE_API',
+    shift: 'SHIFT_VOTE_API'
   }
 }
