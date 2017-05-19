@@ -7,7 +7,7 @@ const PlayerRecord = Record({
   name: '',
   group: '',
   votes_count: 0,
-  user_voted: false 
+  vote_id: null 
 });
 
 export const PlayerType = PropTypes.shape({
@@ -16,7 +16,7 @@ export const PlayerType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   group: PropTypes.string.isRequired,
   votes_count: PropTypes.number.isRequired,
-  user_voted: PropTypes.bool.isRequired
+  vote_id: PropTypes.number
 })
 
 export default class Player extends PlayerRecord {}
