@@ -63,7 +63,6 @@ class Guitar extends Component {
 
 const mapStateToProps = (state) => {
   const { entityId, isEdit } = state.Guitar.guitar
-  console.log(state.GuitarPlayer.guitarPlayers[entityId])
   return { 
     guitar: state.entities.Guitar.guitars[entityId],
     players: state.GuitarPlayer.guitarPlayers[entityId],

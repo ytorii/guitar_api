@@ -18,28 +18,6 @@ const guitarReducer = {
         guitars: _.union(state.guitars, action.payload.result),
         guitar: newState(state.guitar, {isEdit: false})
       })
-    },
-
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
-  },
-
-
-  [Actions.guitar.show]: {
-    next: (state, action) => {
-      return newState(state, {
-        isModalOpen: true,
-        guitar: newState(state.guitar, { entityId: action.payload })
-      })
-    },
-
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
     }
   },
 
@@ -49,36 +27,16 @@ const guitarReducer = {
         guitars: state.guitars.filter(id => id != action.payload),
         isModalOpen: false
       })
-    },
-
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
     }
   },
 
-  [Actions.vote.add]: {
-    next: (state, action) => {
+  [Actions.guitar.show]:
+    (state, action) => {
       return newState(state, {
-        guitar: newState(state.guitar, {
-          players: state.guitar.players.map( p => {
-            if(p.id === action.payload.player_id){
-              p.user_voted = true
-              p.votes_count++
-            }
-            return p
-          })
-        })
+        isModalOpen: true,
+        guitar: newState(state.guitar, { entityId: action.payload })
       })
     },
-
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
-  },
 
   [Actions.guitar.requestGuitar]:
     (state, action) => {

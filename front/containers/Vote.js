@@ -12,11 +12,11 @@ class Vote extends Component {
   }
 
   render(){
-    const { userVoted } = this.props
+    const { userVoted, isSending } = this.props
     return (
       <div>
         { !userVoted &&
-          <button onClick={ this.onSubmitHandler.bind(this) } disabled={ this.props.isSending }>
+          <button onClick={ this.onSubmitHandler.bind(this) } disabled={ isSending }>
             vote!
           </button>
         }
