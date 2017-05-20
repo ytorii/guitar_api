@@ -7,8 +7,12 @@ import ActionDispatch    from '../utils/ActionDispatch'
 
 const schema = [ PlayerSchema ]
 
-// After add new vote, rerenders whole the guitar.
 export const addVote = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
     VoteAPI.add(params), [ requestGuitar ], schema)
+}
+
+export const deleteVote = (params) => {
+  return ActionDispatch.executeApi(createAction(Actions.player.merge),
+    VoteAPI.del(params), [ requestGuitar ], schema)
 }

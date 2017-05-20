@@ -7,8 +7,12 @@ import PlayerSchema      from '../schemas/Player'
 
 const schema = [ PlayerSchema ]
 
-// After add new player, rerenders whole the guitar.
 export const addPlayer = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
     PlayerAPI.add(params), [ requestGuitar ], schema)
+}
+
+export const deletePlayer = (id) => {
+  return ActionDispatch.executeApi(createAction(Actions.player.delete),
+    PlayerAPI.del(id), [ requestGuitar ])
 }

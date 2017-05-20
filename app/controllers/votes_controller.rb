@@ -17,7 +17,8 @@ class VotesController < ApplicationController
   # DELETE /votes/1
   def destroy
     if @vote.destroy
-      render json: @vote.id
+      @player = Player.find(@vote.player_id)
+      render json: @player
     else
       render json: @vote.errors, status: :unprocessable_entity
     end

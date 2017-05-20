@@ -44,8 +44,8 @@ const playerReducer = {
   [Actions.player.delete]: {
     next: (state, action) => {
       return newState(state, {
-        players: _.pickBy(state.players, ( g => {
-          return g.id != action.payload
+        players: _.pickBy(state.players, ( p => {
+          return p.id != action.payload
         }))
       })
     },

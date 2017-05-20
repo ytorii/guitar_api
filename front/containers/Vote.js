@@ -3,7 +3,7 @@ import { connect }          from 'react-redux'
 import * as Actions         from '../actions/Vote'
 
 class Vote extends Component {
-  onSubmitHandler(e) {
+  onVoteHandler(e) {
     e.preventDefault()
     const params = {
       player_id: this.props.playerId 
@@ -11,17 +11,31 @@ class Vote extends Component {
     this.props.addVote(params)
   }
 
+  onCancelHandler(e) {
+    e.preventDefault()
+    const params = {
+      player_id: this.props.playerId,
+      id: this.props.voteId 
+    }
+    this.props.deleteVote(params)
+  }
+  onDeleteHandler(e){
+    e.preventDefault()
+    this.props.deleteGuitar(this.props.guitar.id)
+  }
   render(){
     const { voteId, isSending } = this.props
     return (
       <div>
         { !voteId &&
-          <button onClick={ this.onSubmitHandler.bind(this) } disabled={ isSending }>
+          <button onClick={ this.onVoteHandler.bind(this) } disabled={ isSending }>
             vote!
           </button>
         }
         { voteId &&
-          <div>voted</div>
+          <button onClick={ this.onCancelHandler.bind(this) } disabled={ isSending }>
+            cancel vote
+          </button>
         }
       </div>
     )

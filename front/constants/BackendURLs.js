@@ -1,3 +1,4 @@
+//const BackendURL = 'http://192.168.11.3:3000'
 const BackendURL = 'http://192.168.0.8:3000'
 //const BackendURL = 'http://localhost:3000'
 
@@ -12,6 +13,6 @@ export default {
   players: `${BackendURL}/players`,
   player: (id) => `${BackendURL}/players/${id}`,
   votes: (params) => `${BackendURL}/players/${params.player_id}/votes`,
-  vote: (params) => `${BackendURL}/players/${params.player_id}/vote/${params.id}`
+  vote: (params) => `${BackendURL}/players/${params.player_id}/votes/${params.id}`
 }
 
