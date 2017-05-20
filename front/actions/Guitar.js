@@ -11,20 +11,19 @@ export const selectMaker = createAction(Actions.guitar.selectMaker,
 
 export const toggleEdit = createAction(Actions.guitar.toggleEdit)
 export const toggleGuitarModal = createAction(Actions.guitar.toggleModal)
-
-export const requestGuitar = createAction(Actions.guitar.request)
-export const recieveGuitar = createAction(Actions.guitar.recieve)
+export const toggleGuitarFetching = createAction(Actions.guitar.toggleFetching)
+export const toggleGuitarSending = createAction(Actions.guitar.toggleSending)
 
 export const showGuitar = createAction(Actions.guitar.show)
 
 export const fetchGuitars = () => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.merge), 
-    GuitarAPI.fetch(), [ requestGuitar ], schema)
+    GuitarAPI.fetch(), [ toggleGuitarFetching ], schema)
 }
 
 export const addGuitar = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.merge),
-    GuitarAPI.add(params), [ requestGuitar ], schema)
+    GuitarAPI.add(params), [ toggleGuitarFetching ], schema)
 }
 
 export const editGuitar = (params) => {
@@ -34,5 +33,5 @@ export const editGuitar = (params) => {
 
 export const deleteGuitar = (id) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.delete),
-    GuitarAPI.del(id), [ requestGuitar, toggleGuitarModal ])
+    GuitarAPI.del(id), [ toggleGuitarFetching, toggleGuitarModal ])
 }

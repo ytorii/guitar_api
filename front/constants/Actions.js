@@ -11,10 +11,10 @@ export default {
     merge: 'MERGE_GUITAR_API',
     show: 'SHOW_GUITAR',
     delete: 'DELETE_GUITAR_API',
-    request: 'REQUEST_GUITAR',
-    recieve: 'RECIEVE_GUITAR',
     selectMaker: 'SELECT_GUITAR_MAKER',
     toggleEdit: 'TOGGLE_GUITAR_EDIT',
+    toggleFetching: 'TOGGLE_GUITAR_FETCHING',
+    toggleSending: 'TOGGLE_GUITAR_SENDING',
     toggleModal: 'TOGGLE_GUITAR_MODAL'
   },
 

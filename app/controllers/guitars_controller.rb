@@ -12,7 +12,7 @@ class GuitarsController < ApplicationController
 
   # GET /guitars/1
   def show
-    render json: @guitar, scope: fetch_players_scope 
+    render json: @guitar
   end
 
   # POST /guitars
@@ -29,10 +29,10 @@ class GuitarsController < ApplicationController
   # PATCH/PUT /guitars/1
   def update
     if @guitar.update(guitar_params)
-      render json: @guitar, scope: fetch_players_scope 
+      render json: @guitar
     else
       render json: @guitar.errors,
-        status: :unprocessable_entity, scope: fetch_players_scope 
+        status: :unprocessable_entity
     end
   end
 

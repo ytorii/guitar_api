@@ -38,10 +38,10 @@ const guitarReducer = {
       })
     },
 
-  [Actions.guitar.request]:
+  [Actions.guitar.toggleFetching]:
     (state, action) => {
       return newState(state, {
-        isFetching: true
+        isFetching: !state.isFetching
       })
     },
 

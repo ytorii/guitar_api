@@ -5,7 +5,11 @@ import reloadGuitarsMiddleware from './middlewares/reloadGuitarsMiddleware'
 import recieveMiddleware from './middlewares/recieveMiddleware'
 
 //const middlwares = [ thunk ]
-const middlwares = [ thunk, recieveMiddleware, reloadGuitarsMiddleware ]
+const middlwares = [
+  thunk,
+  recieveMiddleware,
+  reloadGuitarsMiddleware
+]
 
 const configureStore = (preloadedState) => {
   return createStore(
