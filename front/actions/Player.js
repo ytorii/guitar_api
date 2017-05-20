@@ -9,10 +9,10 @@ const schema = [ PlayerSchema ]
 
 export const addPlayer = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
-    PlayerAPI.add(params), [ requestGuitar ], schema)
+    PlayerAPI.add(params), null, schema)
 }
 
 export const deletePlayer = (id) => {
   return ActionDispatch.executeApi(createAction(Actions.player.delete),
-    PlayerAPI.del(id), [ requestGuitar ])
+    PlayerAPI.del(id))
 }

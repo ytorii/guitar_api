@@ -19,10 +19,7 @@ class Vote extends Component {
     }
     this.props.deleteVote(params)
   }
-  onDeleteHandler(e){
-    e.preventDefault()
-    this.props.deleteGuitar(this.props.guitar.id)
-  }
+
   render(){
     const { voteId, isSending } = this.props
     return (
@@ -44,7 +41,7 @@ class Vote extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return { 
-    isSending: state.Guitar.isSending
+    //isSending: state.Guitar.isSending
   }
 }
 

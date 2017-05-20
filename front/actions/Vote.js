@@ -9,10 +9,11 @@ const schema = [ PlayerSchema ]
 
 export const addVote = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
-    VoteAPI.add(params), [ requestGuitar ], schema)
+    //VoteAPI.add(params), [ requestGuitar ], schema)
+    VoteAPI.add(params), null, schema)
 }
 
 export const deleteVote = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
-    VoteAPI.del(params), [ requestGuitar ], schema)
+    VoteAPI.del(params), null, schema)
 }

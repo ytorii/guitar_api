@@ -38,14 +38,14 @@ const guitarReducer = {
       })
     },
 
-  [Actions.guitar.requestGuitar]:
+  [Actions.guitar.request]:
     (state, action) => {
       return newState(state, {
         isFetching: true
       })
     },
 
-  [Actions.guitar.recieveGuitar]:
+  [Actions.guitar.recieve]:
     (state, action) => {
       return newState(state, {
         isFetching: false

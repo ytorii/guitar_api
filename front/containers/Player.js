@@ -24,7 +24,7 @@ class Player extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return { 
-    isSending: state.Guitar.isSending,
+    //isSending: state.Guitar.isSending,
     player: state.entities.Player.players[ownProps.entityId],
   }
 }
