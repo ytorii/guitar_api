@@ -3,13 +3,13 @@ export default {
     signUp: 'SIGNUP_USER_API',
     signIn: 'SIGNIN_USER_API',
     signOut: 'SIGNOUT_USER_API',
-    sendCredentials: 'SEND_CREDENTIALS',
+    toggleSending: 'TOGGLE_USER_SENDING',
     toggleModal: 'TOGGLE_USER_MODAL'
   },
 
   guitar: {
-    show: 'SHOW_GUITAR',
     merge: 'MERGE_GUITAR_API',
+    show: 'SHOW_GUITAR',
     delete: 'DELETE_GUITAR_API',
     request: 'REQUEST_GUITAR',
     recieve: 'RECIEVE_GUITAR',
@@ -21,10 +21,14 @@ export default {
   player: {
     merge: 'MERGE_PLAYER_API',
     show: 'SHOW_PLAYER_API',
-    delete: 'DELETE_PLAYER_API'
+    delete: 'DELETE_PLAYER_API',
+    request: 'REQUEST_PLAYER',
+    recieve: 'RECIEVE_PLAYER'
   },
 
   vote: {
-    shift: 'SHIFT_VOTE_API'
+    shift: 'SHIFT_VOTE_API',
+    request: 'REQUEST_VOTE',
+    recieve: 'RECIEVE_VOTE'
   }
 }

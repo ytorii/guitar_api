@@ -25,7 +25,7 @@ export class UserForms extends Component {
               <SignInForm {...this.props} />
             </div>
             <div style={{display: 'inline-block', marginRight: 10}} >
-              <button onClick= {this.onToggleHandler.bind(this)} >
+              <button onClick= {this.onToggleHandler.bind(this)} disabled={this.props.isSending}>
                 Create New Account
               </button>
               <Modal isOpen={this.props.isModalOpen} onClose={this.props.toggleUserModal}>
@@ -40,7 +40,7 @@ export class UserForms extends Component {
               Hello, {this.props.user.email}
             </div>
             <div style={{display: 'inline-block', marginRight: 10}} >
-              <SignOutForm onClick={ this.props.signOutUser }/>
+              <SignOutForm {...this.props} />
             </div>
           </div>
         }

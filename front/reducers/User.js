@@ -12,19 +12,11 @@ const userInitial = {
 }
 
 const userReducer = {
-  [Actions.user.sendCredentials]:
-    (state, action) => {
-      return newState(state, {
-        isSending: true
-      })
-    },
-
   [Actions.user.signIn]:{
     next: (state, action) => {
       return newState(state, {
         user: action.payload.data,
         isSignedIn: true,
-        isSending: false,
         isModalOpen: false
       })
     },
@@ -32,7 +24,6 @@ const userReducer = {
     throw: (state, action) => {
       return newState(state, {
         isSignedIn: false,
-        isSending: false,
         errors: action.payload.messages
       })
     }
@@ -47,18 +38,23 @@ const userReducer = {
     next: (state, action) => {
       return newState(state, {
         isSignedIn: action.payload.success,
-        isSending: false
       })
     },
 
     throw: (state, action) => {
       return newState(state, {
         isSignedIn: false,
-        isSending: false,
         errors: action.payload.messages
       })
     }
   },
+
+  [Actions.user.toggleSending]:
+    (state, action) => {
+      return newState(state, {
+        isSending: !state.isSending
+      })
+    },
 
   [Actions.user.toggleModal]: 
     (state, action) => {
