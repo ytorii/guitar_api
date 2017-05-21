@@ -9,16 +9,25 @@ const normalizeJson = (json, schema) => {
   return json
 }
 
-const dispatchExtraActions = (dispatch, actions) => {
-  if(actions){
+const dispatchActions = (dispatch, actions) => {
+  if(actions instanceof Array){
     actions.map((action) => { dispatch(action()) })
+  } else {
+    dispatch(actions())
   }
 }      
 
 const ActionDispatch = {
+  execute(action, params, extraActions){
+    return dispatch => {
+      dispatchActions(dispatch, extraActions)
+      dispatch(action(params))
+    }
+  },
+
   executeApi(action, api, extraActions, schema, errorUrl){
     return dispatch => {
-      dispatchExtraActions(dispatch, extraActions)
+      dispatchActions(dispatch, extraActions)
       return api
         .then(json => {
           json = normalizeJson(json, schema)

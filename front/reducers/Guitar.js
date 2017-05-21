@@ -25,7 +25,6 @@ const guitarReducer = {
     next: (state, action) => {
       return newState(state, {
         guitars: state.guitars.filter(id => id != action.payload),
-        isModalOpen: false
       })
     }
   },
@@ -33,7 +32,6 @@ const guitarReducer = {
   [Actions.guitar.show]:
     (state, action) => {
       return newState(state, {
-        isModalOpen: true,
         guitar: newState(state.guitar, { entityId: action.payload })
       })
     },
@@ -42,13 +40,6 @@ const guitarReducer = {
     (state, action) => {
       return newState(state, {
         isFetching: !state.isFetching
-      })
-    },
-
-  [Actions.guitar.recieve]:
-    (state, action) => {
-      return newState(state, {
-        isFetching: false
       })
     },
 
@@ -76,8 +67,6 @@ const guitarReducer = {
   [Actions.guitar.toggleModal]: 
     (state, action) => {
       return newState(state, {
-        //isFetching: false,
-        //guitar: state.isModalOpen ? {} : state.guitar,
         isModalOpen: !state.isModalOpen
       })
     }

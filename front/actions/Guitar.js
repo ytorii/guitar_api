@@ -14,7 +14,9 @@ export const toggleGuitarModal = createAction(Actions.guitar.toggleModal)
 export const toggleGuitarFetching = createAction(Actions.guitar.toggleFetching)
 export const toggleGuitarSending = createAction(Actions.guitar.toggleSending)
 
-export const showGuitar = createAction(Actions.guitar.show)
+export const showGuitar = (id) =>  {
+  return ActionDispatch.execute(createAction(Actions.guitar.show), id, [ toggleGuitarModal ])
+}
 
 export const fetchGuitars = () => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.merge), 

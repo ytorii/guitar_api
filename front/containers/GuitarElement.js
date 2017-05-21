@@ -4,17 +4,17 @@ import { connect }          from 'react-redux'
 class GuitarElement extends Component {
   onShowHandler(e){
     e.preventDefault()
-    this.props.onShow(this.props.params.id)
+    this.props.onShow(this.props.guitar.id)
   }
 
   render(){
     return (
       <tr>
         <td>
-          {this.props.params.name}
+          {this.props.guitar.name}
         </td>
         <td style={{textAlign:'center'}}>
-          {this.props.params.maker}
+          {this.props.guitar.maker}
         </td>
         <td>
           <button onClick={this.onShowHandler.bind(this)}>
@@ -28,7 +28,7 @@ class GuitarElement extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return { 
-    params: state.entities.Guitar.guitars[ownProps.entityId]
+    guitar: state.entities.Guitar.guitars[ownProps.entityId]
   }
 }
 
