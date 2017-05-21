@@ -20,10 +20,8 @@ export default {
 
   player: {
     merge: 'MERGE_PLAYER_API',
-    show: 'SHOW_PLAYER_API',
     delete: 'DELETE_PLAYER_API',
-    request: 'REQUEST_PLAYER',
-    recieve: 'RECIEVE_PLAYER'
+    toggleSending: 'TOGGLE_GUITAR_SENDING'
   },
 
   vote: {

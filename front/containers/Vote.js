@@ -41,7 +41,7 @@ class Vote extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return { 
-    //isSending: state.Guitar.isSending
+    isSending: state.Player.isSending
   }
 }
 

@@ -1,11 +1,14 @@
+import { toggleUserSending }    from '../actions/User'
 import { toggleGuitarFetching } from '../actions/Guitar'
-import { toggleUserSending }   from '../actions/User'
+import { togglePlayerSending }  from '../actions/Player'
 
 const recieveMiddleware = store => next => action => {
-  if(/GUITAR_API$/.test(action.type)){
-    store.dispatch(toggleGuitarFetching())
-  } else if(/USER_API$/.test(action.type)){
+  if(/USER_API$/.test(action.type)){
     store.dispatch(toggleUserSending())
+  } else if(/GUITAR_API$/.test(action.type)){
+    store.dispatch(toggleGuitarFetching())
+  } else if(/PLAYER_API$/.test(action.type)){
+    store.dispatch(togglePlayerSending())
   }
 
   next(action)

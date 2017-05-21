@@ -1,19 +1,18 @@
-import { createAction }  from 'redux-actions'
-import { requestGuitar } from './Guitar'
-import * as VoteAPI      from '../api/Vote'
-import Actions           from '../constants/Actions'
-import PlayerSchema      from '../schemas/Player'
-import ActionDispatch    from '../utils/ActionDispatch'
+import { createAction }        from 'redux-actions'
+import { togglePlayerSending } from './Player'
+import * as VoteAPI            from '../api/Vote'
+import Actions                 from '../constants/Actions'
+import PlayerSchema            from '../schemas/Player'
+import ActionDispatch          from '../utils/ActionDispatch'
 
 const schema = [ PlayerSchema ]
 
 export const addVote = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
-    //VoteAPI.add(params), [ requestGuitar ], schema)
-    VoteAPI.add(params), null, schema)
+    VoteAPI.add(params), togglePlayerSending, schema)
 }
 
 export const deleteVote = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
-    VoteAPI.del(params), null, schema)
+    VoteAPI.del(params), togglePlayerSending, schema)
 }

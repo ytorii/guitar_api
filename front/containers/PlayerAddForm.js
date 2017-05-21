@@ -42,7 +42,7 @@ export class PlayerAddForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { isSending: state.Guitar.isFetching }
+  return { isSending: state.Player.isSending }
 }
 
 export default connect(mapStateToProps, { addPlayer } )(PlayerAddForm)
