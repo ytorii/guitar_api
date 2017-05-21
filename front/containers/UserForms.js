@@ -37,7 +37,7 @@ export class UserForms extends Component {
         { this.props.isSignedIn && this.props.user &&
           <div>
             <div style={{display: 'inline-block', marginRight: 10}} >
-              Hello, {this.props.user.email}
+              Hello, {this.props.user.nickname}
             </div>
             <div style={{display: 'inline-block', marginRight: 10}} >
               <SignOutForm {...this.props} />
