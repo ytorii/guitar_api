@@ -29,8 +29,8 @@ export const addGuitar = (params) => {
 }
 
 export const editGuitar = (params) => {
-  return ActionDispatch.executeApi(createAction(Actions.guitar.merge),
-    GuitarAPI.edit(params), [ toggleGuitarFetching ], schema)
+  return ActionDispatch.executeApi(createAction(Actions.guitar.edit),
+    GuitarAPI.edit(params), [ toggleGuitarSending ], schema)
 }
 
 export const deleteGuitar = (id) => {

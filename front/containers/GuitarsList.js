@@ -3,7 +3,7 @@ import { connect }           from 'react-redux'
 import * as Actions          from '../actions/Guitar'
 import Guitar                from './Guitar'
 import GuitarElememt         from './GuitarElement'
-import GuitarEditForm        from '../components/GuitarEditForm'
+import GuitarEditForm        from './GuitarEditForm'
 import Modal                 from '../components/Modal'
 
 class GuitarsList extends Component {

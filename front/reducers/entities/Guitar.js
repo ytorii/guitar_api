@@ -5,25 +5,31 @@ import Guitar            from '../../models/Guitar'
 
 const newState = (state, data) => Object.assign({}, state, data)
 
-const guitarInitial = {
-  guitars: {} 
+const guitarInitial = { guitars: {} }
+
+const mergeGuitar = (state, action) => {
+  const guitars = action.payload.entities.guitars
+  return newState(state, {
+    guitars: _.merge({}, state.guitars, _.mapValues(guitars, g => new Guitar(g)))
+  })
+}
+
+const errorState = (state, action) => {
+  return newState(state, {
+    errors: action.payload.messages
+  })
 }
 
 const guitarReducer = {
 
   [Actions.guitar.merge]: {
-    next: (state, action) => {
-      const guitars = action.payload.entities.guitars
-      return newState(state, {
-        guitars: _.merge({}, state.guitars, _.mapValues(guitars, g => new Guitar(g)))
-      })
-    },
+    next: mergeGuitar,
+    throw: errorState
+  },
 
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
+  [Actions.guitar.edit]: {
+    next: mergeGuitar,
+    throw: errorState
   },
 
   [Actions.guitar.delete]: {
@@ -35,11 +41,7 @@ const guitarReducer = {
       })
     },
 
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
+    throw: errorState
   }
 }
 

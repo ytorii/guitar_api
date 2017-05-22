@@ -5,29 +5,31 @@ const newState = (state, data) => Object.assign({}, state, data)
 
 const guitarInitial = {
   isFetching: false,
+  isSending: false,
   isModalOpen: false,
   selectedMaker: '',
   guitars: [],
-  guitar: {isEdit: false}
+  guitar: { isEdit: false }
+}
+
+const mergeGuitars = (state, action) => {
+  return newState(state, {
+    guitars: _.union(state.guitars, action.payload.result),
+    guitar: newState(state.guitar, {isEdit: false})
+  })
 }
 
 const guitarReducer = {
-  [Actions.guitar.merge]: {
-    next: (state, action) => {
-      return newState(state, {
-        guitars: _.union(state.guitars, action.payload.result),
-        guitar: newState(state.guitar, {isEdit: false})
-      })
-    }
-  },
+  [Actions.guitar.merge]: mergeGuitars,
 
-  [Actions.guitar.delete]: {
-    next: (state, action) => {
+  [Actions.guitar.edit]: mergeGuitars,
+
+  [Actions.guitar.delete]:
+    (state, action) => {
       return newState(state, {
         guitars: state.guitars.filter(id => id != action.payload),
       })
-    }
-  },
+    },
 
   [Actions.guitar.show]:
     (state, action) => {
@@ -36,19 +38,17 @@ const guitarReducer = {
       })
     },
 
-  [Actions.guitar.toggleFetching]:
-    (state, action) => {
-      return newState(state, {
-        isFetching: !state.isFetching
-      })
-    },
+  [Actions.guitar.toggleFetching]: 
+    (state, action) => newState(state, { isFetching: !state.isFetching }),
+
+  [Actions.guitar.toggleSending]:
+    (state, action) => newState(state, { isSending: !state.isSending }) ,
 
   [Actions.guitar.selectMaker]:
-    (state, action) => {
-      return newState(state, {
-        selectedMaker: action.payload.selectedMaker
-      })
-    },
+    (state, action) => newState(state, { selectedMaker: action.payload.selectedMaker }) ,
+
+  [Actions.guitar.toggleModal]: 
+    (state, action) => newState(state, { isModalOpen: !state.isModalOpen }),
 
   [Actions.guitar.toggleEdit]:
     (state, action) => {
@@ -61,13 +61,6 @@ const guitarReducer = {
       )
       return newState(state, {
         guitar: newState(state.guitar, {isEdit: !state.guitar.isEdit})
-      })
-    },
-
-  [Actions.guitar.toggleModal]: 
-    (state, action) => {
-      return newState(state, {
-        isModalOpen: !state.isModalOpen
       })
     }
 }

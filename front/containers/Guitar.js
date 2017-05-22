@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 import * as Actions         from '../actions/Guitar'
-import GuitarEditForm       from '../components/GuitarEditForm'
+import GuitarEditForm       from './GuitarEditForm'
 import Player               from './Player'
 import PlayerAddForm        from './PlayerAddForm'
 
@@ -17,8 +17,6 @@ class Guitar extends Component {
         <GuitarEditForm
           guitar={ guitar }
           key={ guitar.id }
-          onEdit={ this.props.editGuitar }
-          onCancel={ this.props.toggleEdit }
         />
         :
         <div>

@@ -10,6 +10,7 @@ export default {
   guitar: {
     merge: 'MERGE_GUITAR_API',
     show: 'SHOW_GUITAR',
+    edit: 'EDIT_GUITAR_API',
     delete: 'DELETE_GUITAR_API',
     selectMaker: 'SELECT_GUITAR_MAKER',
     toggleEdit: 'TOGGLE_GUITAR_EDIT',

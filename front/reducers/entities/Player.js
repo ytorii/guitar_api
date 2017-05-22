@@ -5,8 +5,12 @@ import Player              from '../../models/Player'
 
 const newState = (state, data) => Object.assign({}, state, data)
 
-const playerInitial = {
-  players: {} 
+const playerInitial = { players: {} }
+
+const errorState = (state, action) => {
+  return newState(state, {
+    errors: action.payload.messages
+  })
 }
 
 const playerReducer = {
@@ -19,11 +23,7 @@ const playerReducer = {
       })
     },
 
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
+    throw: errorState
   },
 
   [Actions.player.merge]: {
@@ -34,11 +34,7 @@ const playerReducer = {
       })
     },
 
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
+    throw: errorState
   },
 
   [Actions.player.delete]: {
@@ -50,11 +46,7 @@ const playerReducer = {
       })
     },
 
-    throw: (state, action) => {
-      return newState(state, {
-        errors: action.payload.messages
-      })
-    }
+    throw: errorState
   }
 }
 
