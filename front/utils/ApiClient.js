@@ -1,8 +1,8 @@
-import request from 'superagent'
-import TokenStorage from './TokenStorage'
+import request       from 'superagent'
+import ClientStorage from './ClientStorage'
 
 const onSuccess = (response) => {
-  TokenStorage.save(response.headers)
+  ClientStorage.saveToken(response.headers)
   return response.body
 }
 
@@ -39,28 +39,28 @@ const ApiClient = {
   get(path, params) {
     return request
       .get(path)
-      .set(TokenStorage.fetch())
+      .set(ClientStorage.fetchToken())
       .query(params)
       .then(onSuccess, onFailure)
   },
   post(path, params) {
     return request
       .post(path)
-      .set(TokenStorage.fetch())
+      .set(ClientStorage.fetchToken())
       .send(params)
       .then(onSuccess, onFailure)
   },
   patch(path, params) {
     return request
       .patch(path)
-      .set(TokenStorage.fetch())
+      .set(ClientStorage.fetchToken())
       .send(params)
       .then(onSuccess, onFailure)
   },
   delete(path) {
     return request
       .del(path)
-      .set(TokenStorage.fetch())
+      .set(ClientStorage.fetchToken())
       .then(onSuccess, onFailure)
   }
 }

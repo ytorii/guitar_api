@@ -1,7 +1,7 @@
 const authKeys =  [ 'access-token', 'client', 'expiry', 'token-type', 'uid' ]
 
-const TokenStorage = {
-  save(headers) {
+const ClientStorage = {
+  saveToken(headers) {
     authKeys.map( (key) => {
       if(headers[key]){
         window.sessionStorage.removeItem(key)
@@ -10,14 +10,14 @@ const TokenStorage = {
     })
   },
 
-  exists() {
+  tokenExists() {
     return !(window.sessionStorage.getItem(authKeys[0]) == undefined)
   },
 
-  fetch() {
+  fetchToken() {
     let temp = {}
 
-    if(this.exists()){
+    if(this.tokenExists()){
       authKeys.map( (key) => {
         temp[key] = window.sessionStorage.getItem(key)
       })
@@ -25,11 +25,11 @@ const TokenStorage = {
     return temp
   },
 
-  delete() {
+  deleteToken() {
     authKeys.map( (key) => {
       window.sessionStorage.removeItem(key)
     })
   }
 }
 
-export default TokenStorage
+export default ClientStorage

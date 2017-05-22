@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions'
 import Actions          from '../constants/Actions'
-import TokenStorage     from '../utils/TokenStorage'
+import ClientStorage    from '../utils/ClientStorage'
 import * as UserAPIs    from '../api/User'
 
 const userSignIn = createAction(Actions.user.signIn)
@@ -30,7 +30,7 @@ export const signOutUser = () => {
     dispatch(toggleUserSending())
     return UserAPIs.signOutAPI()
       .then( json => {
-        TokenStorage.delete()
+        ClientStorage.deleteToken()
         return dispatch(userSignOut(json))
       })
   }
