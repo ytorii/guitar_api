@@ -13,7 +13,10 @@ export const signUpUser = (params) => {
   return dispatch => {
     dispatch(toggleUserSending())
     return UserAPIs.signUpAPI(params)
-      .then(json => dispatch(userSignIn(json)))
+      .then(json => {
+        ClientStorage.saveUser(json.data)
+        dispatch(userSignIn(json.data))
+      })
   }
 }
 
@@ -21,7 +24,11 @@ export const signInUser = (params) => {
   return dispatch => {
     dispatch(toggleUserSending())
     return UserAPIs.signInAPI(params)
-      .then(json => dispatch(userSignIn(json)))
+      .then(json => {
+        console.log(json.data)
+        ClientStorage.saveUser(json.data)
+        return dispatch(userSignIn(json.data))
+      })
   }
 }
 

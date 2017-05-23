@@ -4,18 +4,20 @@ import ClientStorage      from '../utils/ClientStorage'
 
 const newState = (state, data) => Object.assign({}, state, data)
 
-const userInitial = {
-  user: null,
-  isSignedIn: ClientStorage.tokenExists(),
-  isSending: false,
-  isModalOpen: false
+const userInitial = () => {
+  return {
+    user: ClientStorage.fetchUser(),
+    isSignedIn: ClientStorage.tokenExists(),
+    isSending: false,
+    isModalOpen: false
+  }
 }
 
 const userReducer = {
   [Actions.user.signIn]:{
     next: (state, action) => {
       return newState(state, {
-        user: action.payload.data,
+        user: action.payload,
         isSignedIn: true,
         isModalOpen: false
       })
@@ -31,7 +33,7 @@ const userReducer = {
 
   [Actions.user.signOut]:
     (state, action) => {
-      return newState(userInitial)
+      return newState(userInitial())
     },
 
   [Actions.user.checkSignin]:{
@@ -64,4 +66,4 @@ const userReducer = {
     }
 }
 
-export default handleActions(userReducer, userInitial)
+export default handleActions(userReducer, userInitial())
