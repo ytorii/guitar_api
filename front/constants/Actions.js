@@ -4,7 +4,8 @@ export default {
     signIn: 'SIGNIN_USER_API',
     signOut: 'SIGNOUT_USER_API',
     toggleSending: 'TOGGLE_USER_SENDING',
-    toggleModal: 'TOGGLE_USER_MODAL'
+    toggleModal: 'TOGGLE_USER_MODAL',
+    error: 'ERROR_USER_API'
   },
 
   guitar: {

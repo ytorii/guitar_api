@@ -14,8 +14,8 @@ const userInitial = () => {
 }
 
 const userReducer = {
-  [Actions.user.signIn]:{
-    next: (state, action) => {
+  [Actions.user.signIn]:
+    (state, action) => {
       return newState(state, {
         user: action.payload,
         isSignedIn: true,
@@ -23,47 +23,20 @@ const userReducer = {
       })
     },
 
-    throw: (state, action) => {
-      console.log('ERROR')
-      return newState(state, {
-        isSignedIn: false,
-        errors: action.payload.messages
-      })
-    }
-  },
-
   [Actions.user.signOut]:
     (state, action) => {
       return newState(userInitial())
     },
 
-  [Actions.user.checkSignin]:{
-    next: (state, action) => {
-      return newState(state, {
-        isSignedIn: action.payload.success,
-      })
-    },
-
-    throw: (state, action) => {
-      return newState(state, {
-        isSignedIn: false,
-        errors: action.payload.messages
-      })
-    }
-  },
-
   [Actions.user.toggleSending]:
-    (state, action) => {
-      return newState(state, {
-        isSending: !state.isSending
-      })
-    },
+    (state, action) => newState(state, { isSending: !state.isSending }),
 
   [Actions.user.toggleModal]: 
+    (state, action) => newState(state, { isModalOpen: !state.isModalOpen }),
+
+  [Actions.user.error]:
     (state, action) => {
-      return newState(state, {
-        isModalOpen: !state.isModalOpen
-      })
+      return newState(state, { errors: action.payload.messages })
     }
 }
 

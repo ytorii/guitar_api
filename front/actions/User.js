@@ -6,6 +6,8 @@ import * as UserAPIs    from '../api/User'
 const userSignIn = createAction(Actions.user.signIn)
 const userSignOut = createAction(Actions.user.signOut)
 
+const errorAction = createAction(Actions.user.error)
+
 export const toggleUserSending = createAction(Actions.user.toggleSending)
 export const toggleUserModal = createAction(Actions.user.toggleModal)
 
@@ -17,6 +19,7 @@ export const signUpUser = (params) => {
         ClientStorage.saveUser(json.data)
         dispatch(userSignIn(json.data))
       })
+      .catch((error) => dispatch(errorAction(error)))
   }
 }
 
@@ -28,6 +31,7 @@ export const signInUser = (params) => {
         ClientStorage.saveUser(json.data)
         return dispatch(userSignIn(json.data))
       })
+      .catch((error) => dispatch(errorAction(error)))
   }
 }
 
@@ -39,5 +43,6 @@ export const signOutUser = () => {
         ClientStorage.clearAll()
         return dispatch(userSignOut(json))
       })
+      .catch((error) => dispatch(errorAction(error)))
   }
 }
