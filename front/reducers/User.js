@@ -24,6 +24,7 @@ const userReducer = {
     },
 
     throw: (state, action) => {
+      console.log('ERROR')
       return newState(state, {
         isSignedIn: false,
         errors: action.payload.messages
