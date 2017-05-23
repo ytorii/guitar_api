@@ -16,18 +16,19 @@ export default {
     toggleEdit: 'TOGGLE_GUITAR_EDIT',
     toggleFetching: 'TOGGLE_GUITAR_FETCHING',
     toggleSending: 'TOGGLE_GUITAR_SENDING',
-    toggleModal: 'TOGGLE_GUITAR_MODAL'
+    toggleModal: 'TOGGLE_GUITAR_MODAL',
+    error: 'ERROR_GUITAR_API'
   },
 
   player: {
     merge: 'MERGE_PLAYER_API',
     delete: 'DELETE_PLAYER_API',
-    toggleSending: 'TOGGLE_GUITAR_SENDING'
+    toggleSending: 'TOGGLE_GUITAR_SENDING',
+    error: 'ERROR_PLAYER_API'
   },
 
   vote: {
     shift: 'SHIFT_VOTE_API',
-    request: 'REQUEST_VOTE',
-    recieve: 'RECIEVE_VOTE'
+    error: 'ERROR_VOTE_API'
   }
 }

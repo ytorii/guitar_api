@@ -5,9 +5,8 @@ class User < ActiveRecord::Base
           #:confirmable, :omniauthable
   include DeviseTokenAuth::Concerns::User
 
-  name_length = 4..20
-
   validates_uniqueness_of :nickname
-  validates_presence_of :nickname, :name
-  validates_length_of :name, :nickname, within: name_length
+  validates :name, :nickname,
+            presence: true,
+            length: { minimum:3, maximum: 20, allow_blank: false }
 end

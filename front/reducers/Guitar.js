@@ -24,7 +24,7 @@ const guitarReducer = {
 
   [Actions.guitar.edit]: mergeGuitars,
 
-  [Actions.guitar.delete]:
+  [Actions.guitar.delete]: 
     (state, action) => {
       return newState(state, {
         guitars: state.guitars.filter(id => id != action.payload),
@@ -38,30 +38,28 @@ const guitarReducer = {
       })
     },
 
+  [Actions.guitar.toggleEdit]:
+    (state, action) => {
+      return newState(state, {
+        guitar: newState(state.guitar, {isEdit: !state.guitar.isEdit})
+      })
+    },
+
   [Actions.guitar.toggleFetching]: 
     (state, action) => newState(state, { isFetching: !state.isFetching }),
 
   [Actions.guitar.toggleSending]:
     (state, action) => newState(state, { isSending: !state.isSending }) ,
 
-  [Actions.guitar.selectMaker]:
-    (state, action) => newState(state, { selectedMaker: action.payload.selectedMaker }) ,
-
   [Actions.guitar.toggleModal]: 
     (state, action) => newState(state, { isModalOpen: !state.isModalOpen }),
 
-  [Actions.guitar.toggleEdit]:
+  [Actions.guitar.selectMaker]:
+    (state, action) => newState(state, { selectedMaker: action.payload.selectedMaker }),
+
+  [Actions.guitar.error]: 
     (state, action) => {
-      console.log(
-        { ...state, 
-          guitar: { ...state.guitar,
-            isEdit: !state.guitar.isEdit
-          }
-        }
-      )
-      return newState(state, {
-        guitar: newState(state.guitar, {isEdit: !state.guitar.isEdit})
-      })
+      return newState(state, { errors: action.payload.messages })
     }
 }
 

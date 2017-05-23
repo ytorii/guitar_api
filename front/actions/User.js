@@ -25,7 +25,6 @@ export const signInUser = (params) => {
     dispatch(toggleUserSending())
     return UserAPIs.signInAPI(params)
       .then(json => {
-        console.log(json.data)
         ClientStorage.saveUser(json.data)
         return dispatch(userSignIn(json.data))
       })

@@ -25,7 +25,7 @@ const ActionDispatch = {
     }
   },
 
-  executeApi(action, api, extraActions, schema, errorUrl){
+  executeApi(action, api, extraActions, schema, errorAction){
     return dispatch => {
       dispatchActions(dispatch, extraActions)
       return api
@@ -33,6 +33,7 @@ const ActionDispatch = {
           json = normalizeJson(json, schema)
           return dispatch(action(json))
         })
+        .catch((error) => dispatch(errorAction(error)))
     }
   }
 }

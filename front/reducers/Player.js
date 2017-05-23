@@ -13,6 +13,11 @@ const playerReducer = {
       return newState(state, {
         isSending: !state.isSending
       })
+    },
+
+  [Actions.player.error]: 
+    (state, action) => {
+      return newState(state, { errors: action.payload.messages })
     }
 }
 

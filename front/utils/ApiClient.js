@@ -1,5 +1,6 @@
-import request       from 'superagent'
-import ClientStorage from './ClientStorage'
+import request          from 'superagent'
+import ClientStorage    from './ClientStorage'
+import ApiResponseError from './ApiResponseError'
 
 const onSuccess = (response) => {
   ClientStorage.saveToken(response.headers)
@@ -9,30 +10,24 @@ const onSuccess = (response) => {
 const createErrorMessages = (errorBody) => {
   let errorMessages = []
 
-  for (var key in errorBody) {
-    // skip loop if the property is from prototype
-    if (!errorBody.hasOwnProperty(key)) continue;
-
+  Object.keys(errorBody).map( key => {
     errorBody[key].forEach((error) => {
       errorMessages.push(`${key}${error}`)
     })
-  }
+  })
 
   return errorMessages
 }
 
 const onFailure = (error) => {
-  console.log(error)
   let errorMessages = []
 
   if (error.status === 404) {
     errorMessages = ['Not Found']
   } else {
-    errorMessages = error
-    //errorMessages = createErrorMessages(error)
+    errorMessages = createErrorMessages(error.response.body)
   }
-
-  return errorMessages
+  throw new ApiResponseError(errorMessages)
 }
 
 const ApiClient = {
