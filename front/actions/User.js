@@ -30,7 +30,7 @@ export const signOutUser = () => {
     dispatch(toggleUserSending())
     return UserAPIs.signOutAPI()
       .then( json => {
-        ClientStorage.deleteToken()
+        ClientStorage.clearAll()
         return dispatch(userSignOut(json))
       })
   }
