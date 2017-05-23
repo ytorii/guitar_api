@@ -13,6 +13,7 @@ export const toggleEdit = createAction(Actions.guitar.toggleEdit)
 export const toggleGuitarModal = createAction(Actions.guitar.toggleModal)
 export const toggleGuitarFetching = createAction(Actions.guitar.toggleFetching)
 export const toggleGuitarSending = createAction(Actions.guitar.toggleSending)
+
 const errorAction = createAction(Actions.guitar.error)
 
 export const showGuitar = (id) =>  {
@@ -36,5 +37,5 @@ export const editGuitar = (params) => {
 
 export const deleteGuitar = (id) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.delete),
-    GuitarAPI.del(id), [ toggleGuitarFetching, toggleGuitarModal ], errorAction)
+    GuitarAPI.del(id), [ toggleGuitarFetching, toggleGuitarModal ], null, errorAction)
 }

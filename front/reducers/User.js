@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 import Actions           from '../constants/Actions'
-import ClientStorage      from '../utils/ClientStorage'
+import ClientStorage     from '../utils/ClientStorage'
 
 const newState = (state, data) => Object.assign({}, state, data)
 

@@ -23,6 +23,7 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state.Player.errors)
   return { 
     player: state.entities.Player.players[ownProps.entityId],
   }

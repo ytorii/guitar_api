@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: [ :destroy ]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # POST /votes
   def create

@@ -14,6 +14,7 @@ export class UserForms extends Component {
   }
 
   render() {
+    console.log(this.props.errors)
     return (
       <div style={{background: '#a0d8ef', height: 20, padding: 5 }} >
         { !this.props.isSignedIn &&

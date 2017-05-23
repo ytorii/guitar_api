@@ -7,27 +7,8 @@ const onSuccess = (response) => {
   return response.body
 }
 
-const createErrorMessages = (errorBody) => {
-  let errorMessages = []
-
-  Object.keys(errorBody).map( key => {
-    errorBody[key].forEach((error) => {
-      errorMessages.push(`${key}${error}`)
-    })
-  })
-
-  return errorMessages
-}
-
 const onFailure = (error) => {
-  let errorMessages = []
-
-  if (error.status === 404) {
-    errorMessages = ['Not Found']
-  } else {
-    errorMessages = createErrorMessages(error.response.body)
-  }
-  throw new ApiResponseError(errorMessages)
+  throw new ApiResponseError(error)
 }
 
 const ApiClient = {
@@ -38,6 +19,7 @@ const ApiClient = {
       .query(params)
       .then(onSuccess, onFailure)
   },
+
   post(path, params) {
     return request
       .post(path)
@@ -45,6 +27,7 @@ const ApiClient = {
       .send(params)
       .then(onSuccess, onFailure)
   },
+
   patch(path, params) {
     return request
       .patch(path)
@@ -52,6 +35,7 @@ const ApiClient = {
       .send(params)
       .then(onSuccess, onFailure)
   },
+
   delete(path) {
     return request
       .del(path)

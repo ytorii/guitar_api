@@ -7,6 +7,7 @@ import PlayerSchema      from '../schemas/Player'
 const schema = [ PlayerSchema ]
 
 const errorAction = createAction(Actions.player.error)
+
 export const togglePlayerSending = createAction(Actions.player.toggleSending)
 
 export const addPlayer = (params) => {
