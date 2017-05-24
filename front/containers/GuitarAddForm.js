@@ -45,4 +45,8 @@ const mapStateToProps = (state) => {
   return { isSending: state.Guitar.isFetching }
 }
 
+GuitarAddForm.propTypes ={
+  isSending: React.PropTypes.bool.isRequired
+}
+
 export default connect(mapStateToProps, { addGuitar } )(GuitarAddForm)

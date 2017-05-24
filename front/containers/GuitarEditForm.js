@@ -44,4 +44,8 @@ const mapStateToProps = (state) => {
   }
 }
 
+GuitarEditForm.propTypes ={
+  isSending: React.PropTypes.bool.isRequired
+}
+
 export default connect(mapStateToProps, Actions)(GuitarEditForm)

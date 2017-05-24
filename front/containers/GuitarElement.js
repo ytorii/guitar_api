@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
+import { showGuitar }        from '../actions/Guitar'
 
 class GuitarElement extends Component {
   onShowHandler(e){
     e.preventDefault()
-    this.props.onShow(this.props.guitar.id)
+    this.props.showGuitar(this.props.guitar.id)
   }
 
   render(){
@@ -32,4 +33,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(GuitarElement)
+export default connect(mapStateToProps, { showGuitar })(GuitarElement)

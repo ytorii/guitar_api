@@ -5,12 +5,11 @@ import GuitarModel          from '../models/Guitar'
 
 import GuitarComponent      from '../components/GuitarComponent'
 import GuitarEditForm       from './GuitarEditForm'
-import Player               from './Player'
-import PlayerAddForm        from './PlayerAddForm'
+import PlayerContainers     from './PlayerContainers'
 
 class Guitar extends Component {
   render(){
-    const { guitar, isEdit, players } = this.props
+    const { guitar, isEdit } = this.props
     return (
       <div>
         <h3>Guitar Data</h3>
@@ -19,16 +18,7 @@ class Guitar extends Component {
           :
           <GuitarComponent {...this.props} />
         }
-        <p>Add Player </p>
-        <PlayerAddForm guitarId={guitar.id} />
-        <p>Players of this Guitar</p>
-        { players &&
-          <ul>
-            { players.map((id) => 
-              <Player key={ id } entityId={ id } />
-            )}
-          </ul>
-        }
+        <PlayerContainers />
       </div>
     )
   }
@@ -38,14 +28,12 @@ const mapStateToProps = (state) => {
   const { entityId, isEdit } = state.Guitar.guitar
   return { 
     guitar: state.entities.Guitar.guitars[entityId],
-    players: state.entities.GuitarPlayer.guitarPlayers[entityId],
     isEdit: isEdit
   }
 }
 
 Guitar.propTypes ={
   guitar: React.PropTypes.instanceOf(GuitarModel).isRequired,
-  players: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
   isEdit: React.PropTypes.bool.isRequired
 }
 
