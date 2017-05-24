@@ -7,10 +7,4 @@ const GuitarRecord = Record({
   maker: ''
 })
 
-const GuitarType = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  maker: PropTypes.string.isRequired
-})
-
-export default class Guitar extends GuitarRecord {}
+export default class GuitarModel extends GuitarRecord {}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 import * as Actions         from '../actions/Guitar'
+import GuitarModel          from '../models/Guitar'
 import GuitarEditForm       from './GuitarEditForm'
 import Player               from './Player'
 import PlayerAddForm        from './PlayerAddForm'
@@ -63,9 +64,15 @@ const mapStateToProps = (state) => {
   const { entityId, isEdit } = state.Guitar.guitar
   return { 
     guitar: state.entities.Guitar.guitars[entityId],
-    players: state.GuitarPlayer.guitarPlayers[entityId],
-    isEdit: isEdit,
+    players: state.entities.GuitarPlayer.guitarPlayers[entityId],
+    isEdit: isEdit
   }
+}
+
+Guitar.propTypes ={
+  guitar: React.PropTypes.instanceOf(GuitarModel).isRequired,
+  players: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+  isEdit: React.PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps, Actions)(Guitar)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 import * as Actions         from '../actions/Player'
+import PlayerModel          from '../models/Player'
 import Vote                 from './Vote'
 
 class Player extends Component {
@@ -23,10 +24,11 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.Player.errors)
   return { 
     player: state.entities.Player.players[ownProps.entityId],
   }
 }
+
+Player.propTypes = { player: React.PropTypes.instanceOf(PlayerModel).isRequired }
 
 export default connect(mapStateToProps, Actions)(Player)

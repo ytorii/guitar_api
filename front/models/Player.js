@@ -19,4 +19,4 @@ export const PlayerType = PropTypes.shape({
   vote_id: PropTypes.number
 })
 
-export default class Player extends PlayerRecord {}
+export default class PlayerModel extends PlayerRecord {}

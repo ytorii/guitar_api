@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import Actions           from '../constants/Actions'
+import Actions           from '../../constants/Actions'
 import _                 from 'lodash'
 
 const newState = (state, data) => Object.assign({}, state, data)

@@ -12,7 +12,7 @@ export const VoteType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   guitar_id: PropTypes.number.isRequired,
   user_id: PropTypes.number.isRequired,
-  amount: PropTypes.number.isRequired
+  amount: PropTypes.number
 })
 
 export default class Vote extends VoteRecord {
