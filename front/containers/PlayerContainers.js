@@ -24,7 +24,7 @@ class PlayerContainers extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const guitarId = state.Guitar.guitar.entityId
+  const guitarId = state.Guitar.guitar
   return { 
     guitarId: guitarId,
     players: state.entities.GuitarPlayer.guitarPlayers[guitarId]

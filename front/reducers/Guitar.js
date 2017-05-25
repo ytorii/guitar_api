@@ -1,21 +1,14 @@
 import { handleActions }   from 'redux-actions'
 import Actions             from '../constants/Actions'
+import GuitarView          from '../models/GuitarView'
+import _                   from 'lodash'
 
-const newState = (state, data) => Object.assign({}, state, data)
-
-const guitarInitial = {
-  isFetching: false,
-  isModalOpen: false,
-  selectedMaker: '',
-  guitars: [],
-  guitar: { isEdit: false }
-}
+const guitarInitial = new GuitarView()
 
 const mergeGuitars = (state, action) => {
-  return newState(state, {
-    guitars: _.union(state.guitars, action.payload.result),
-    guitar: newState(state.guitar, {isEdit: false})
-  })
+  return state
+    .set('guitars', _.union(state.guitars, action.payload.result))
+    .set('isEdit', false)
 }
 
 const guitarReducer = {
@@ -23,36 +16,27 @@ const guitarReducer = {
 
   [Actions.guitar.delete]: 
     (state, action) => {
-      return newState(state, {
-        guitars: state.guitars.filter(id => id != action.payload),
-      })
+      return state
+        .set('guitars', state.guitars.filter(id => id != action.payload))
     },
 
   [Actions.guitar.show]:
-    (state, action) => {
-      return newState(state, {
-        guitar: newState(state.guitar, { entityId: action.payload })
-      })
-    },
+    (state, action) => state.set('guitar', action.payload),
+
+  [Actions.guitar.toggleProp]:
+    (state, action) => action.payload,
 
   [Actions.guitar.toggleEdit]:
-    (state, action) => {
-      return newState(state, {
-        guitar: newState(state.guitar, {isEdit: !state.guitar.isEdit})
-      })
-    },
+    (state, action) => state.toggleProp('isEdit'),
 
   [Actions.guitar.toggleFetching]: 
-    (state, action) => newState(state, { isFetching: !state.isFetching }),
+    (state, action) => state.toggleProp('isFetching'),
 
   [Actions.guitar.toggleModal]: 
-    (state, action) => newState(state, { isModalOpen: !state.isModalOpen }),
-
-  [Actions.guitar.selectMaker]:
-    (state, action) => newState(state, { selectedMaker: action.payload.selectedMaker }),
+    (state, action) => state.toggleProp('isModalOpen'),
 
   [Actions.guitar.error]: 
-    (state, action) => newState(state, { errors: action.payload.messages })
+    (state, action) => state.set('errors', action.payload.messages)
 }
 
 export default handleActions(guitarReducer, guitarInitial)

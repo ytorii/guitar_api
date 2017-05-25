@@ -2,16 +2,17 @@ import { PropTypes } from 'react';
 import { Record } from 'immutable';
 
 const GuitarViewRecord = Record({
+  guitar: 0,
+  guitars: [],
+  isEdit: false,
   isFetching: false,
   isModalOpen: false,
   selectedMaker: '',
-  guitars: [],
-  guitar: { isEdit: false }
+  errors: []
 })
 
 export default class GuitarViewModel extends GuitarViewRecord {
   toggleProp(prop){
-    console.log(this.[prop])
-    return this.set(prop, !this.[prop])
+    return this.set(prop, !this[prop])
   }
 }

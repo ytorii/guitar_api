@@ -24,10 +24,10 @@ class Guitar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { entityId, isEdit } = state.Guitar.guitar
+  const entityId = state.Guitar.guitar
   return { 
     guitar: state.entities.Guitar.guitars[entityId],
-    isEdit: isEdit
+    isEdit: state.Guitar.isEdit
   }
 }
 
