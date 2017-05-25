@@ -21,8 +21,6 @@ const mergeGuitars = (state, action) => {
 const guitarReducer = {
   [Actions.guitar.merge]: mergeGuitars,
 
-  [Actions.guitar.edit]: mergeGuitars,
-
   [Actions.guitar.delete]: 
     (state, action) => {
       return newState(state, {
@@ -54,9 +52,7 @@ const guitarReducer = {
     (state, action) => newState(state, { selectedMaker: action.payload.selectedMaker }),
 
   [Actions.guitar.error]: 
-    (state, action) => {
-      return newState(state, { errors: action.payload.messages })
-    }
+    (state, action) => newState(state, { errors: action.payload.messages })
 }
 
 export default handleActions(guitarReducer, guitarInitial)

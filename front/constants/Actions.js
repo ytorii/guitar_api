@@ -11,12 +11,10 @@ export default {
   guitar: {
     merge: 'MERGE_GUITAR_API',
     show: 'SHOW_GUITAR',
-    edit: 'EDIT_GUITAR_API',
     delete: 'DELETE_GUITAR_API',
     selectMaker: 'SELECT_GUITAR_MAKER',
     toggleEdit: 'TOGGLE_GUITAR_EDIT',
     toggleFetching: 'TOGGLE_GUITAR_FETCHING',
-    toggleSending: 'TOGGLE_GUITAR_SENDING',
     toggleModal: 'TOGGLE_GUITAR_MODAL',
     error: 'ERROR_GUITAR_API'
   },

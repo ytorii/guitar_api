@@ -26,7 +26,6 @@ const deleteGuitar = (state, action) => {
 
 const guitarReducer = {
   [Actions.guitar.merge]: { next: mergeGuitar },
-  [Actions.guitar.edit]: { next: mergeGuitar },
   [Actions.guitar.delete]: { next: deleteGuitar }
 }
 
