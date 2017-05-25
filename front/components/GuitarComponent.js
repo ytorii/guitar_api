@@ -7,6 +7,11 @@ class GuitarComponent extends Component {
     this.props.deleteGuitar(this.props.guitar.id)
   }
 
+  onToggleEdit(e){
+    e.preventDefault()
+    this.props.toggleProp('isEdit')
+  }
+
   render(){
     const { guitar } = this.props
     return (
@@ -19,7 +24,7 @@ class GuitarComponent extends Component {
             {guitar.maker}
           </li>
         </ul>
-        <button onClick={this.props.toggleEdit}>
+        <button onClick={this.onToggleEdit.bind(this)}>
           edit
         </button>
         <button onClick={this.onDeleteHandler.bind(this)}>

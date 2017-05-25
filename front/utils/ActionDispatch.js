@@ -11,9 +11,9 @@ const normalizeJson = (json, schema) => {
 
 const dispatchActions = (dispatch, actions) => {
   if(actions instanceof Array){
-    actions.map((action) => { dispatch(action()) })
+    actions.map((action) => { dispatch(action) })
   } else {
-    dispatch(actions())
+    dispatch(actions)
   }
 }      
 

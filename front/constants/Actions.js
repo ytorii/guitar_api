@@ -12,10 +12,7 @@ export default {
     merge: 'MERGE_GUITAR_API',
     show: 'SHOW_GUITAR',
     delete: 'DELETE_GUITAR_API',
-    selectMaker: 'SELECT_GUITAR_MAKER',
-    toggleEdit: 'TOGGLE_GUITAR_EDIT',
-    toggleFetching: 'TOGGLE_GUITAR_FETCHING',
-    toggleModal: 'TOGGLE_GUITAR_MODAL',
+    toggleProp: 'TOGGLE_GUITAR_PROP',
     error: 'ERROR_GUITAR_API'
   },
 

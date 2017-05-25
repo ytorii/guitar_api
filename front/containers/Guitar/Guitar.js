@@ -4,7 +4,6 @@ import * as Actions         from '../../actions/Guitar'
 import GuitarModel          from '../../models/Guitar'
 import GuitarComponent      from '../../components/GuitarComponent'
 import GuitarEditForm       from '../GuitarForm/GuitarEditForm'
-import PlayerContainers     from '../PlayerContainers'
 
 class Guitar extends Component {
   render(){
@@ -17,7 +16,6 @@ class Guitar extends Component {
           :
           <GuitarComponent {...this.props} />
         }
-        <PlayerContainers />
       </div>
     )
   }

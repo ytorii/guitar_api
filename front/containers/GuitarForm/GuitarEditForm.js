@@ -15,7 +15,7 @@ class GuitarEditForm extends Component {
 
   onCancelHandler(e) {
     e.preventDefault()
-    this.props.toggleEdit(this.props.guitar.id)
+    this.props.toggleProp('isEdit')
   }
 
   render() {

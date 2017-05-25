@@ -10,10 +10,10 @@ const errorAction = createAction(Actions.player.error)
 
 export const addVote = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
-    VoteAPI.add(params), togglePlayerSending, schema, errorAction)
+    VoteAPI.add(params), togglePlayerSending(), schema, errorAction)
 }
 
 export const deleteVote = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
-    VoteAPI.del(params), togglePlayerSending, schema, errorAction)
+    VoteAPI.del(params), togglePlayerSending(), schema, errorAction)
 }

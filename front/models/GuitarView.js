@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
-import { Record } from 'immutable';
+import { Record } from 'immutable'
+import _          from 'lodash'
 
 const GuitarViewRecord = Record({
   guitar: 0,
@@ -12,6 +12,18 @@ const GuitarViewRecord = Record({
 })
 
 export default class GuitarViewModel extends GuitarViewRecord {
+  mergeGuitars(guitars){
+    return this
+      .set('guitars', _.union(this.guitars, guitars))
+      .set('isEdit', false)
+  }
+
+  deleteGuitar(guitarId){
+    return this
+      .set('guitars', this.guitars.filter(id => id != guitarId))
+      .set('isModalOpen', false)
+  }
+
   toggleProp(prop){
     return this.set(prop, !this[prop])
   }

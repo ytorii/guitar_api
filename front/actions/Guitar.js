@@ -6,35 +6,31 @@ import ActionDispatch   from '../utils/ActionDispatch'
 
 const schema = [ GuitarSchema ]
 
-export const selectMaker = createAction(Actions.guitar.selectMaker,
-  (maker) => { return { selectedMaker: maker } } )
-
-export const toggleEdit = createAction(Actions.guitar.toggleEdit)
-export const toggleGuitarModal = createAction(Actions.guitar.toggleModal)
-export const toggleGuitarFetching = createAction(Actions.guitar.toggleFetching)
-
 const errorAction = createAction(Actions.guitar.error)
 
+export const toggleProp = createAction(Actions.guitar.toggleProp)
+
 export const showGuitar = (id) =>  {
-  return ActionDispatch.execute(createAction(Actions.guitar.show), id, [ toggleGuitarModal ])
+  return ActionDispatch.execute(createAction(Actions.guitar.show),
+    id, toggleProp('isModalOpen'))
 }
 
 export const fetchGuitars = () => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.merge), 
-    GuitarAPI.fetch(), [ toggleGuitarFetching ], schema, errorAction)
+    GuitarAPI.fetch(), toggleProp('isFetching'), schema, errorAction)
 }
 
 export const addGuitar = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.merge),
-    GuitarAPI.add(params), [ toggleGuitarFetching ], schema, errorAction)
+    GuitarAPI.add(params), toggleProp('isFetching'), schema, errorAction)
 }
 
 export const editGuitar = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.merge),
-    GuitarAPI.edit(params), [ toggleGuitarFetching ], schema, errorAction)
+    GuitarAPI.edit(params), toggleProp('isFetching'), schema, errorAction)
 }
 
 export const deleteGuitar = (id) => {
   return ActionDispatch.executeApi(createAction(Actions.guitar.delete),
-    GuitarAPI.del(id), [ toggleGuitarFetching, toggleGuitarModal ], null, errorAction)
+    GuitarAPI.del(id), toggleProp('isFetching'), null, errorAction)
 }

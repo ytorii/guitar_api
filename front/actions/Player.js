@@ -12,10 +12,10 @@ export const togglePlayerSending = createAction(Actions.player.toggleSending)
 
 export const addPlayer = (params) => {
   return ActionDispatch.executeApi(createAction(Actions.player.merge),
-    PlayerAPI.add(params), togglePlayerSending, schema, errorAction)
+    PlayerAPI.add(params), togglePlayerSending(), schema, errorAction)
 }
 
 export const deletePlayer = (id) => {
   return ActionDispatch.executeApi(createAction(Actions.player.delete),
-    PlayerAPI.del(id), togglePlayerSending, null, errorAction)
+    PlayerAPI.del(id), togglePlayerSending(), null, errorAction)
 }
