@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import * as Actions         from '../actions/Player'
-import PlayerModel          from '../models/Player'
-import Vote                 from './Vote'
+import * as Actions         from '../../actions/Player'
+import PlayerModel          from '../../models/Player'
+import Vote                 from '../Vote/Vote'
 
 class Player extends Component {
   render(){

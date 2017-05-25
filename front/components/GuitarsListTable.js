@@ -1,5 +1,5 @@
 import React         from 'react'
-import GuitarElememt from '../containers/GuitarElement'
+import GuitarElememt from '../containers/GuitarsList/GuitarElement'
 
 const GuitarsListTable = ({guitars}) => {
   return (

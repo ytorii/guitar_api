@@ -1,6 +1,6 @@
 class GuitarsController < ApplicationController
   before_action :set_guitar, only: [:show, :update, :destroy]
-  #before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   # GET /guitars
   def index

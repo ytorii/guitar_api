@@ -1,8 +1,8 @@
 import React , { Component } from 'react'
 import { connect }           from 'react-redux'
-import { toggleGuitarModal } from '../actions/Guitar'
+import { toggleGuitarModal } from '../../actions/Guitar'
 import Guitar                from './Guitar'
-import Modal                 from '../components/Modal'
+import Modal                 from '../../components/Modal'
 
 class GuitarModal extends Component {
   render(){
@@ -18,6 +18,10 @@ class GuitarModal extends Component {
 
 const mapStateToProps = (state) => {
   return { isModalOpen: state.Guitar.isModalOpen }
+}
+
+GuitarModal.propTypes ={
+  isModalOpen: React.PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps, { toggleGuitarModal })(GuitarModal)

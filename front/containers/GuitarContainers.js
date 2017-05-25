@@ -1,10 +1,9 @@
 import React , { Component } from 'react'
 import { connect }           from 'react-redux'
 import { fetchGuitars }      from '../actions/Guitar'
-import GuitarAddForm         from './GuitarAddForm'
-import GuitarsList           from './GuitarsList'
-import GuitarModal           from './GuitarModal'
-import MakerSelect           from './MakerSelect'
+import GuitarAddForm         from './GuitarForm/GuitarAddForm'
+import GuitarsList           from './GuitarsList/GuitarsList'
+import GuitarModal           from './Guitar/GuitarModal'
 
 class GuitarContainers extends Component {
   componentDidMount(){
@@ -17,15 +16,8 @@ class GuitarContainers extends Component {
         <h1> The guitars list </h1>
         <GuitarAddForm />
         <br />
-        { this.props.isFetching &&
-          <h3>Loading...</h3>
-        }
-        { !this.props.isFetching &&
-          <div>
-            <GuitarsList />
-            <GuitarModal />
-          </div>
-        }
+        <GuitarsList />
+        <GuitarModal />
       </div>
     )
   }
@@ -33,6 +25,10 @@ class GuitarContainers extends Component {
 
 const mapStateToProps = (state) => {
   return { isFetching: state.Guitar.isFetching }
+}
+
+GuitarContainers.propTypes ={
+  isFetching: React.PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps, { fetchGuitars })(GuitarContainers)

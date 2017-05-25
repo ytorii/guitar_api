@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import { newSessionAPI }    from '../api/User'
 import * as Actions         from '../actions/User'
 import SignUpForm           from '../components/SignUpForm'
 import SignInForm           from '../components/SignInForm'
 import SignOutForm          from '../components/SignOutForm'
 import Modal                from '../components/Modal'
 
-export class UserForms extends Component {
+export class UserContainers extends Component {
   onToggleHandler(e){
     e.preventDefault()
     this.props.toggleUserModal()
   }
 
   render() {
-    console.log(this.props.errors)
     return (
       <div style={{background: '#a0d8ef', height: 20, padding: 5 }} >
         { !this.props.isSignedIn &&
@@ -35,7 +33,7 @@ export class UserForms extends Component {
             </div>
           </div>
         }
-        { this.props.isSignedIn && this.props.user &&
+        { this.props.isSignedIn &&
           <div>
             <div style={{display: 'inline-block', marginRight: 10}} >
               Hello, {this.props.user.nickname}
@@ -52,4 +50,4 @@ export class UserForms extends Component {
 
 const mapStateToProps = (state) => state.User
 
-export default connect( mapStateToProps, Actions)(UserForms)
+export default connect( mapStateToProps, Actions)(UserContainers)

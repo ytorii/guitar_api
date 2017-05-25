@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import * as Actions         from '../actions/Vote'
+import * as Actions         from '../../actions/Vote'
 
 class Vote extends Component {
   onVoteHandler(e) {

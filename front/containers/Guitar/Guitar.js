@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import * as Actions         from '../actions/Guitar'
-import GuitarModel          from '../models/Guitar'
-
-import GuitarComponent      from '../components/GuitarComponent'
-import GuitarEditForm       from './GuitarEditForm'
-import PlayerContainers     from './PlayerContainers'
+import * as Actions         from '../../actions/Guitar'
+import GuitarModel          from '../../models/Guitar'
+import GuitarComponent      from '../../components/GuitarComponent'
+import GuitarEditForm       from '../GuitarForm/GuitarEditForm'
+import PlayerContainers     from '../PlayerContainers'
 
 class Guitar extends Component {
   render(){

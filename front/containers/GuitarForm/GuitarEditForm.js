@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import * as Actions         from '../actions/Guitar'
+import * as Actions         from '../../actions/Guitar'
 
 class GuitarEditForm extends Component {
   onSubmitHandler(e) {
@@ -20,19 +20,19 @@ class GuitarEditForm extends Component {
 
   render() {
     const { id, name, maker } = this.props.guitar
-    const { isSending } = this.props
+    const { isFetching } = this.props
     return (
       <form onSubmit={ this.onSubmitHandler.bind(this) }>
         <ul>
           <li>
-            <input type="text" ref="inputName" defaultValue={ name } disabled={ isSending }/>
+            <input type="text" ref="inputName" defaultValue={ name } disabled={ isFetching }/>
           </li>
           <li>
-            <input type="text" ref="inputMaker" defaultValue={ maker } disabled={ isSending }/>
+            <input type="text" ref="inputMaker" defaultValue={ maker } disabled={ isFetching }/>
           </li>
         </ul>
-        <input type="submit" value="edit" disabled={ isSending }/>
-        <input type="button" value="cancel" onClick={ this.onCancelHandler.bind(this)} disabled={ isSending } /> 
+        <input type="submit" value="edit" disabled={ isFetching }/>
+        <input type="button" value="cancel" onClick={ this.onCancelHandler.bind(this)} disabled={ isFetching } /> 
       </form>
     )
   }
@@ -40,12 +40,12 @@ class GuitarEditForm extends Component {
 
 const mapStateToProps = (state) => {
   return { 
-    isSending: state.Guitar.isSending
+    isFetching: state.Guitar.isFetching
   }
 }
 
 GuitarEditForm.propTypes ={
-  isSending: React.PropTypes.bool.isRequired
+  isFetching: React.PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps, Actions)(GuitarEditForm)

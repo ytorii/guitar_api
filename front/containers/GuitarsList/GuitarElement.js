@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import { showGuitar }        from '../actions/Guitar'
+import GuitarModel          from '../../models/Guitar'
+import { showGuitar }       from '../../actions/Guitar'
 
 class GuitarElement extends Component {
   onShowHandler(e){
@@ -31,6 +32,10 @@ const mapStateToProps = (state, ownProps) => {
   return { 
     guitar: state.entities.Guitar.guitars[ownProps.entityId]
   }
+}
+
+GuitarElement.propTypes ={
+  guitar: React.PropTypes.instanceOf(GuitarModel).isRequired
 }
 
 export default connect(mapStateToProps, { showGuitar })(GuitarElement)

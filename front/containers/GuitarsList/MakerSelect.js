@@ -1,6 +1,6 @@
 import React , { Component } from 'react'
 import { connect }           from 'react-redux'
-import { selectMaker }       from '../actions/Guitar'
+import { selectMaker }       from '../../actions/Guitar'
 
 const uniqueMaker = (guitars) => {
   return ['', ...new Set(guitars.map((g) => g.maker))]
