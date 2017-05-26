@@ -1,32 +1,15 @@
 import { handleActions } from 'redux-actions'
 import _                 from 'lodash'
 import Actions           from '../../constants/Actions'
-import GuitarModel       from '../../models/Guitar'
-import { Map }           from 'immutable'
+import GuitarsList       from '../../models/GuitarsList'
 
-const guitarInitial = { guitars: {} }
-
-const mergeGuitar = (state, action) => {
-  const guitars = action.payload.entities.guitars
-  const gmap = Map(action.payload.entities.guitars)
-  console.log(gmap.get('1'))
-
-  return {...state,
-    guitars: _.merge({}, state.guitars,
-      _.mapValues(guitars, g => new GuitarModel(g))
-    )
-  }
-}
-
-const deleteGuitar = (state, action) => {
-  return {...state, 
-    guitars: _.pickBy(state.guitars, g => g.id != action.payload )
-  }
-}
+const guitarInitial = new GuitarsList()
 
 const guitarReducer = {
-  [Actions.guitar.merge]: mergeGuitar,
-  [Actions.guitar.delete]: deleteGuitar
+  [Actions.guitar.merge]:
+    (state, action) => state.mergeGuitars(action.payload.entities.guitars),
+  [Actions.guitar.delete]:
+    (state, action) => state.deleteGuitar(action.payload)
 }
 
 export default handleActions(guitarReducer, guitarInitial)

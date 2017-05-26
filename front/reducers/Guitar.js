@@ -9,7 +9,7 @@ const guitarReducer = {
     (state, action) => state.mergeGuitars(action.payload.result),
 
   [Actions.guitar.delete]:
-    (state, action) => state.deleteGuitars(action.payload),
+    (state, action) => state.deleteGuitar(action.payload),
 
   [Actions.guitar.show]:
     (state, action) => state.set('guitar', action.payload),

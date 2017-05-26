@@ -18,9 +18,9 @@ export default class GuitarViewModel extends GuitarViewRecord {
       .set('isEdit', false)
   }
 
-  deleteGuitar(guitarId){
+  deleteGuitar(entityId){
     return this
-      .set('guitars', this.guitars.filter(id => id != guitarId))
+      .set('guitars', this.guitars.filter(id => id != entityId))
       .set('isModalOpen', false)
   }
 
