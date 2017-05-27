@@ -10,7 +10,7 @@ class VotesController < ApplicationController
       @player = Player.find(@vote.player_id)
       render json: @player, status: :created
     else
-      render json: @vote.errors, status: :unprocessable_entity
+      render json: @vote.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -20,7 +20,7 @@ class VotesController < ApplicationController
       @player = Player.find(@vote.player_id)
       render json: @player
     else
-      render json: @vote.errors, status: :unprocessable_entity
+      render json: @vote.errors.full_messages, status: :unprocessable_entity
     end
   end
 

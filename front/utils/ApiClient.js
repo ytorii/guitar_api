@@ -8,6 +8,7 @@ const onSuccess = (response) => {
 }
 
 const onFailure = (error) => {
+  ClientStorage.saveToken(error.response.headers)
   throw new ApiResponseError(error)
 }
 

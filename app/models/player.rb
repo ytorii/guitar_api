@@ -4,7 +4,7 @@ class Player < ApplicationRecord
 
   validates :name,
             presence: true,
-            length: { minimum: 1, maximum: 20, allow_blank: false }
+            length: { minimum: 1, maximum: 20, allow_blank: true }
   validates :group,
             length: { minimum: 1, maximum: 20, allow_blank: true }
 end

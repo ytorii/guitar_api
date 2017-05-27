@@ -20,7 +20,7 @@ class PlayersController < ApplicationController
     if @player.save
       render json: @player, status: :created
     else
-      render json: @player.errors, status: :unprocessable_entity
+      render json: @player.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class PlayersController < ApplicationController
     if @player.update(player_params)
       render json: @player
     else
-      render json: @player.errors, status: :unprocessable_entity
+      render json: @player.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
     if @player.destroy
       render json: @player.id
     else
-      render json: @player.errors, status: :unprocessable_entity
+      render json: @player.errors.full_messages, status: :unprocessable_entity
     end
   end
 

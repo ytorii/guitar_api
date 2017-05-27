@@ -24,6 +24,14 @@ export default class GuitarViewModel extends GuitarViewRecord {
       .set('isModalOpen', false)
   }
 
+  setGuitar(entityId){
+    return this.set('guitar', entityId)
+  }
+
+  setErrors(errors){
+    return this.set('errors', errors)
+  }
+
   toggleProp(prop){
     return this.set(prop, !this[prop])
   }

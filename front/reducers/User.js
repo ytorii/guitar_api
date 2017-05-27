@@ -9,7 +9,8 @@ const userInitial = () => {
     user: ClientStorage.fetchUser(),
     isSignedIn: ClientStorage.tokenExists(),
     isSending: false,
-    isModalOpen: false
+    isModalOpen: false,
+    errors: []
   }
 }
 

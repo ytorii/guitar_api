@@ -1,8 +1,8 @@
 const notFoundMessage = ['Not Found']
-const unauthorizedMessage = ['Please sign in or create new account']
+const unauthorizedMessage = ['Sign in or create new account']
 
 const createErrorMessages = (error) => {
-  const errorBody = error.response.body 
+  const errorBody = error.response.body
 
   let errorMessages = []
 
@@ -14,11 +14,8 @@ const createErrorMessages = (error) => {
       errorMessages = notFoundMessage
       break
     default:
-      Object.keys(errorBody).map( key => {
-        errorBody[key].forEach((error) => {
-          errorMessages.push(`${key} ${error}`)
-        })
-      })
+      errorMessages = errorBody instanceof Array ? 
+        errorBody : errorBody.errors.full_messages 
   }
 
   return errorMessages

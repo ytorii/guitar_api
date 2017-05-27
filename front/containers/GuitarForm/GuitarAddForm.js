@@ -42,6 +42,7 @@ export class GuitarAddForm extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.Guitar.errors)
   return { isSending: state.Guitar.isFetching }
 }
 

@@ -5,8 +5,6 @@ class GuitarsController < ApplicationController
   # GET /guitars
   def index
     @guitars = Guitar.all.includes(players: :votes)
-    # Set fetch players 'false' when players are unneeded.
-    #render json: @guitars, scope: { fetch_players: false }
     render json: @guitars
   end
 
@@ -22,7 +20,7 @@ class GuitarsController < ApplicationController
     if @guitar.save
       render json: @guitar, status: :created, location: @guitar
     else
-      render json: @guitar.errors, status: :unprocessable_entity
+      render json: @guitar.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +29,7 @@ class GuitarsController < ApplicationController
     if @guitar.update(guitar_params)
       render json: @guitar
     else
-      render json: @guitar.errors,
+      render json: @guitar.errors.full_messages,
         status: :unprocessable_entity
     end
   end
@@ -41,31 +39,19 @@ class GuitarsController < ApplicationController
     if @guitar.destroy
       render json: @guitar.id
     else
-      render json: @guitar.errors, status: :unprocessable_entity
+      render json: @guitar.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_guitar
-      @guitar = Guitar.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def guitar_params
-      params.require(:guitar).permit(:id, :name, :maker, :amount)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_guitar
+    @guitar = Guitar.find(params[:id])
+  end
 
-    def fetch_players_scope
-      { fetch_player: true,
-        current_user: current_user,
-        user_votes: user_votes }
-    end
-
-    def user_votes
-      Vote.where(
-        user_id: current_user.id,
-        player_id: @guitar.players.pluck(:id)
-      ) if current_user
-    end
+  # Only allow a trusted parameter "white list" through.
+  def guitar_params
+    params.require(:guitar).permit(:id, :name, :maker, :amount)
+  end
 end

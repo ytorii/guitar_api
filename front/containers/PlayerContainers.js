@@ -24,6 +24,7 @@ class PlayerContainers extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.Player.errors)
   const guitarId = state.Guitar.guitar
   return { 
     guitarId: guitarId,

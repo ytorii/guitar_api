@@ -3,5 +3,5 @@ class Guitar < ApplicationRecord
 
   validates :name, :maker,
             presence: true,
-            length: { minimum: 1, maximum: 20, allow_blank: false }
+            length: { minimum: 1, maximum: 20, allow_blank: true }
 end

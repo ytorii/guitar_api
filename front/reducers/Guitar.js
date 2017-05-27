@@ -12,13 +12,13 @@ const guitarReducer = {
     (state, action) => state.deleteGuitar(action.payload),
 
   [Actions.guitar.show]:
-    (state, action) => state.set('guitar', action.payload),
+    (state, action) => state.setGuitar(action.payload),
 
   [Actions.guitar.toggleProp]:
     (state, action) => state.toggleProp(action.payload),
 
   [Actions.guitar.error]: 
-    (state, action) => state.set('errors', action.payload.messages)
+    (state, action) => state.setErrors(action.payload.messages)
 }
 
 export default handleActions(guitarReducer, guitarInitial)

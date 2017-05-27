@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :nickname
   validates :name, :nickname,
             presence: true,
-            length: { minimum:3, maximum: 20, allow_blank: false }
+            length: { minimum:3, maximum: 20, allow_blank: true }
 end
