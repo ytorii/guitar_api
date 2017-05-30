@@ -26,6 +26,7 @@
 /node_modules
 
 /vendor/bundle
+/app/assets/javascripts
 .DS_Store
 
 # dotenv
