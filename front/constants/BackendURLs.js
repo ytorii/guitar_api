@@ -1,6 +1,4 @@
-//const BackendURL = 'http://192.168.11.3:3000'
-const BackendURL = 'http://192.168.0.8:3000'
-//const BackendURL = 'http://localhost:3000'
+import BackendURL from 'Config'
 
 export default {
   user: {

@@ -20,6 +20,9 @@ module.exports = {
     }
     ]
   },
+  externals : {
+    'Config' : JSON.stringify(require('./config/config.development.js'))
+  },
   devServer: {
     hot: true,
     //host: "192.168.0.8",

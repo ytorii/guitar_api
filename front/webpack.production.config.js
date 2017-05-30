@@ -9,6 +9,9 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
+  externals : {
+    'Config' : JSON.stringify(require('./config/config.production.js'))
+  },
   module: {
     loaders: [
     {

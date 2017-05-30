@@ -1,2 +1,2 @@
 backend: rails s -p $PORT
-frontend: cd front && yarn start
+frontend: cd front && yarn dev
