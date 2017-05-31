@@ -1,4 +1,4 @@
-import BackendURL from 'Config'
+import { BackendURL } from 'Config'
 
 export default {
   user: {
